@@ -118,7 +118,7 @@ namespace ClinicProject1.Services.Implementations
         private async Task<bool> IsTimeSlotAvailable(int doctorId, WorkDays day, AppointmentTimes time)
         {
 
-            var availability = await _availabilityRepository.GetDoctorAvailability(doctorId);
+            var availability = await _availabilityRepository.GetAvailabilityByDoctorId(doctorId);
             if (availability == null || !availability.IsAvailable)
                 return false;
 

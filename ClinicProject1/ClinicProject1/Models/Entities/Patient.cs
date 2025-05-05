@@ -4,7 +4,7 @@ using ClinicProject1.Data.Enums;
 
 namespace ClinicProject1.Models.Entities
 {
-    public class Patient
+    public class Patient 
     {
         [Key]
         [ForeignKey("UserId")]

@@ -71,17 +71,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doctor"
+                  "$ref": "#/components/schemas/DoctorDashboardDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doctor"
+                  "$ref": "#/components/schemas/DoctorDashboardDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doctor"
+                  "$ref": "#/components/schemas/DoctorDashboardDto"
                 }
               }
             }
@@ -657,6 +657,86 @@
         }
       }
     },
+    "/api/doctors/{doctorId}/availability": {
+      "get": {
+        "tags": [
+          "DoctorAvailability"
+        ],
+        "parameters": [
+          {
+            "name": "doctorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorAvailabilityDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorAvailabilityDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorAvailabilityDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DoctorAvailability"
+        ],
+        "parameters": [
+          {
+            "name": "doctorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignAvailabilityDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignAvailabilityDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignAvailabilityDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/MedicalRecords/patient/{patientId}": {
       "get": {
         "tags": [
@@ -700,46 +780,6 @@
   },
   "components": {
     "schemas": {
-      "Appointment": {
-        "required": [
-          "appointmentDay",
-          "doctorId",
-          "patientId",
-          "status",
-          "time"
-        ],
-        "type": "object",
-        "properties": {
-          "appointmentId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "patientId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "doctorId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "appointmentDay": {
-            "$ref": "#/components/schemas/WorkDays"
-          },
-          "time": {
-            "$ref": "#/components/schemas/AppointmentTimes"
-          },
-          "status": {
-            "$ref": "#/components/schemas/AppointmentStatus"
-          },
-          "doctor": {
-            "$ref": "#/components/schemas/Doctor"
-          },
-          "patient": {
-            "$ref": "#/components/schemas/Patient"
-          }
-        },
-        "additionalProperties": false
-      },
       "AppointmentDashboardDto": {
         "type": "object",
         "properties": {
@@ -770,16 +810,6 @@
         },
         "additionalProperties": false
       },
-      "AppointmentStatus": {
-        "enum": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
       "AppointmentTimes": {
         "enum": [
           0,
@@ -795,6 +825,23 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "AssignAvailabilityDto": {
+        "required": [
+          "availableDays"
+        ],
+        "type": "object",
+        "properties": {
+          "availableDays": {
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkDays"
+            }
+          }
+        },
+        "additionalProperties": false
       },
       "CreateAppointmentDto": {
         "required": [
@@ -828,8 +875,7 @@
           "firstName",
           "lastName",
           "password",
-          "specialization",
-          "userName"
+          "specialization"
         ],
         "type": "object",
         "properties": {
@@ -838,10 +884,6 @@
             "type": "string"
           },
           "lastName": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "userName": {
             "minLength": 1,
             "type": "string"
           },
@@ -866,83 +908,23 @@
         },
         "additionalProperties": false
       },
-      "Doctor": {
-        "required": [
-          "specialization"
-        ],
+      "DoctorAvailabilityDto": {
         "type": "object",
         "properties": {
           "doctorId": {
             "type": "integer",
             "format": "int32"
           },
-          "specialization": {
-            "$ref": "#/components/schemas/Specialization"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "appointments": {
+          "availableDays": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Appointment"
+              "type": "string"
             },
             "nullable": true
           },
-          "medicalRecords": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MedicalRecord"
-            },
+          "workingHours": {
+            "type": "string",
             "nullable": true
-          },
-          "availabilities": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DoctorAvailability"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "DoctorAvailability": {
-        "required": [
-          "day1",
-          "day2",
-          "doctorId",
-          "endTime",
-          "startTime"
-        ],
-        "type": "object",
-        "properties": {
-          "availabilityId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "doctorId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "day1": {
-            "$ref": "#/components/schemas/WorkDays"
-          },
-          "day2": {
-            "$ref": "#/components/schemas/WorkDays"
-          },
-          "startTime": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "endTime": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "isAvailable": {
-            "type": "boolean"
-          },
-          "doctor": {
-            "$ref": "#/components/schemas/Doctor"
           }
         },
         "additionalProperties": false
@@ -969,6 +951,17 @@
           "specialization": {
             "type": "string",
             "nullable": true
+          },
+          "availableDays": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "availability": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -980,46 +973,6 @@
         ],
         "type": "integer",
         "format": "int32"
-      },
-      "MedicalRecord": {
-        "required": [
-          "doctorId",
-          "patientId"
-        ],
-        "type": "object",
-        "properties": {
-          "recordId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "patientId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "doctorId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "diagnosis": {
-            "maxLength": 1000,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "prescription": {
-            "maxLength": 1000,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "patient": {
-            "$ref": "#/components/schemas/Patient"
-          },
-          "doctor": {
-            "$ref": "#/components/schemas/Doctor"
-          }
-        },
-        "additionalProperties": false
       },
       "MedicalRecordDto": {
         "type": "object",
@@ -1038,54 +991,6 @@
           },
           "prescription": {
             "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Patient": {
-        "required": [
-          "age",
-          "gender"
-        ],
-        "type": "object",
-        "properties": {
-          "patientId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "age": {
-            "maximum": 100,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32"
-          },
-          "gender": {
-            "$ref": "#/components/schemas/Gender"
-          },
-          "chronicDiseases": {
-            "type": "string",
-            "nullable": true
-          },
-          "medicalComplaint": {
-            "type": "string",
-            "nullable": true
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "appointments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Appointment"
-            },
-            "nullable": true
-          },
-          "medicalRecords": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MedicalRecord"
-            },
             "nullable": true
           }
         },
@@ -1183,15 +1088,6 @@
         },
         "additionalProperties": false
       },
-      "Role": {
-        "enum": [
-          0,
-          1,
-          2
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
       "Specialization": {
         "enum": [
           0,
@@ -1214,70 +1110,6 @@
             "type": "string",
             "format": "tel",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "User": {
-        "required": [
-          "email",
-          "firstName",
-          "lastName",
-          "password",
-          "role",
-          "username"
-        ],
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "username": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string"
-          },
-          "photo": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "maxLength": 12,
-            "minLength": 0,
-            "type": "string"
-          },
-          "role": {
-            "$ref": "#/components/schemas/Role"
-          },
-          "firstName": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string"
-          },
-          "lastName": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string"
-          },
-          "email": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string",
-            "format": "email"
-          },
-          "phoneNumber": {
-            "maxLength": 20,
-            "minLength": 0,
-            "type": "string",
-            "format": "tel",
-            "nullable": true
-          },
-          "doctor": {
-            "$ref": "#/components/schemas/Doctor"
-          },
-          "patient": {
-            "$ref": "#/components/schemas/Patient"
           }
         },
         "additionalProperties": false

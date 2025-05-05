@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "D:\\Projects\\ClinicProject1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/CSDB/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+      "AbsoluteMoniker": "D:0:0:{82C99173-40A4-4B4E-BA1F-2DC469F2AAAF}|ClinicProject1\\ClinicProject1.csproj|d:\\projects\\clinicproject1\\clinicproject1\\controllers\\doctoravailabilitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82C99173-40A4-4B4E-BA1F-2DC469F2AAAF}|ClinicProject1\\ClinicProject1.csproj|solutionrelative:clinicproject1\\controllers\\doctoravailabilitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/CSDB/True/SqlTable/dbo.MedicalRecords.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+      "AbsoluteMoniker": "D:0:0:{82C99173-40A4-4B4E-BA1F-2DC469F2AAAF}|ClinicProject1\\ClinicProject1.csproj|d:\\projects\\clinicproject1\\clinicproject1\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82C99173-40A4-4B4E-BA1F-2DC469F2AAAF}|ClinicProject1\\ClinicProject1.csproj|solutionrelative:clinicproject1\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/CSDB/True/SqlTable/dbo.Appointments.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+      "AbsoluteMoniker": "D:0:0:{82C99173-40A4-4B4E-BA1F-2DC469F2AAAF}|ClinicProject1\\ClinicProject1.csproj|d:\\projects\\clinicproject1\\clinicproject1\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82C99173-40A4-4B4E-BA1F-2DC469F2AAAF}|ClinicProject1\\ClinicProject1.csproj|solutionrelative:clinicproject1\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/CSDB/True/SqlTable/dbo.DoctorAvailability.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+      "AbsoluteMoniker": "D:0:0:{82C99173-40A4-4B4E-BA1F-2DC469F2AAAF}|ClinicProject1\\ClinicProject1.csproj|d:\\projects\\clinicproject1\\clinicproject1\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82C99173-40A4-4B4E-BA1F-2DC469F2AAAF}|ClinicProject1\\ClinicProject1.csproj|solutionrelative:clinicproject1\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,42 +34,54 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DoctorAvailabilityController.cs",
+              "DocumentMoniker": "D:\\Projects\\ClinicProject1\\ClinicProject1\\Controllers\\DoctorAvailabilityController.cs",
+              "RelativeDocumentMoniker": "ClinicProject1\\Controllers\\DoctorAvailabilityController.cs",
+              "ToolTip": "D:\\Projects\\ClinicProject1\\ClinicProject1\\Controllers\\DoctorAvailabilityController.cs",
+              "RelativeToolTip": "ClinicProject1\\Controllers\\DoctorAvailabilityController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAABEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T03:25:19.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "dbo.MedicalRecords [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/CSDB/True/SqlTable/dbo.MedicalRecords.sql",
-              "ToolTip": "dbo.MedicalRecords [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-30T13:57:15.833Z",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Projects\\ClinicProject1\\ClinicProject1\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "ClinicProject1\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Projects\\ClinicProject1\\ClinicProject1\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "ClinicProject1\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T03:25:17.404Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "dbo.Appointments [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/CSDB/True/SqlTable/dbo.Appointments.sql",
-              "ToolTip": "dbo.Appointments [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-30T13:55:45.065Z",
+              "Title": "AppointmentsController.cs",
+              "DocumentMoniker": "D:\\Projects\\ClinicProject1\\ClinicProject1\\Controllers\\AppointmentsController.cs",
+              "RelativeDocumentMoniker": "ClinicProject1\\Controllers\\AppointmentsController.cs",
+              "ToolTip": "D:\\Projects\\ClinicProject1\\ClinicProject1\\Controllers\\AppointmentsController.cs",
+              "RelativeToolTip": "ClinicProject1\\Controllers\\AppointmentsController.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T03:25:12.257Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "dbo.DoctorAvailability [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/CSDB/True/SqlTable/dbo.DoctorAvailability.sql",
-              "ToolTip": "dbo.DoctorAvailability [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-30T13:55:19.387Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "dbo.Users [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/CSDB/True/SqlTable/dbo.Users.sql",
-              "ToolTip": "dbo.Users [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-30T13:54:06.471Z",
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Projects\\ClinicProject1\\ClinicProject1\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "ClinicProject1\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Projects\\ClinicProject1\\ClinicProject1\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "ClinicProject1\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T03:25:09.636Z",
               "EditorCaption": ""
             }
           ]

@@ -9,7 +9,6 @@ namespace ClinicProject1.Models.Entities
         public User()
         {
             Photo = "default-profile.png";
-            Username = $"{FirstName}{LastName}";
         }
 
         [Key]

@@ -29,19 +29,33 @@ namespace ClinicProject1.Services.Implementations
         public async Task<DoctorDashboardDto> GetDoctorById(int doctorId)
         {
             var doctor = await _adminRepository.GetDoctorById(doctorId);
-            if (doctor == null)
-                throw new KeyNotFoundException("Doctor not found");
+            if (doctor == null) return null;
 
-            return _mapper.Map<DoctorDashboardDto>(doctor);
+        var dto = _mapper.Map<DoctorDashboardDto>(doctor);
+        
+                if (doctor.Availabilities.Any())
+        {
+            var availability = doctor.Availabilities.First();
+            dto.AvailableDays = new List<string> 
+            { 
+                availability.Day1.ToString(),
+                availability.Day2.ToString()
+            };
+            dto.Availability = $"{availability.StartTime} - {availability.EndTime}";
         }
 
-        public async Task<Doctor> CreateDoctor(CreateDoctorDto doctorDto)
+        return dto;        }
+
+        public async Task<DoctorDashboardDto> CreateDoctor(CreateDoctorDto doctorDto)
         {
+            var baseUsername = $"{doctorDto.FirstName}{doctorDto.LastName}";
+            var username = baseUsername;
+
             var user = new User
             {
                 FirstName = doctorDto.FirstName,
                 LastName = doctorDto.LastName,
-                Username = doctorDto.UserName,
+                Username = username,
                 Email = doctorDto.Email,
                 Password = doctorDto.Password,
                 PhoneNumber = doctorDto.PhoneNumber,
@@ -54,7 +68,8 @@ namespace ClinicProject1.Services.Implementations
                 User = user
             };
 
-            return await _adminRepository.CreateDoctor(doctor);
+            var createdDoctor = await _adminRepository.CreateDoctor(doctor);
+            return _mapper.Map<DoctorDashboardDto>(createdDoctor);
         }
 
         public async Task<bool> UpdateDoctor(int doctorId, UpdateDoctorDto doctorDto)

@@ -63,7 +63,6 @@ namespace ClinicProject1.Repositories.Implementations
 
             if (doctor == null) return false;
 
-            // Check for existing appointments/records
             if (await _context.Appointments.AnyAsync(a => a.DoctorId == doctorId))
                 return false;
 

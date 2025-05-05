@@ -20,10 +20,10 @@ namespace ClinicProject1.Models.Entities
         public WorkDays Day2 { get; set; }
 
         [Required]
-        public string StartTime { get; set; } = "05:00";
+        public string StartTime { get; set; } = "05:00 PM";
 
         [Required]
-        public string EndTime { get; set; } = "10:00";
+        public string EndTime { get; set; } = "10:00 PM";
 
         public bool IsAvailable { get; set; } = true;
 

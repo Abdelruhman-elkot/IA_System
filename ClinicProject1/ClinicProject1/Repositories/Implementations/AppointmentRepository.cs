@@ -50,9 +50,9 @@ namespace ClinicProject1.Repositories.Implementations
         {
             return await _context.Appointments
                 .Include(a => a.Patient)
-                .ThenInclude(p => p.User)
+                    .ThenInclude(p => p.User)
                 .Include(a => a.Doctor)
-                .ThenInclude(d => d.User)
+                    .ThenInclude(d => d.User)
                 .Where(a => a.DoctorId == doctorId)
                 .ToListAsync();
         }

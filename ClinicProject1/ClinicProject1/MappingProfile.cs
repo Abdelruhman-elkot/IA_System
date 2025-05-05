@@ -5,6 +5,7 @@ using ClinicProject1.DTOs.DoctorDTOs;
 using ClinicProject1.Models.Entities;
 using ClinicProject1.Data.Enums;
 using ClinicProject1.DTOs.MedicalRecordDTOs;
+using ClinicProject1.DTOs.AvailabilityDTOs;
 
 namespace ClinicProject1
 {
@@ -37,7 +38,11 @@ namespace ClinicProject1
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.User.FirstName + " " + src.User.LastName))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.User.Email))
                 .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.User.PhoneNumber))
-                .ForMember(dest => dest.Specialization, opt => opt.MapFrom(src => src.Specialization.ToString()));
+                .ForMember(dest => dest.Specialization, opt => opt.MapFrom(src => src.Specialization.ToString()))
+                .ForMember(dest => dest.AvailableDays, opt => opt.MapFrom(src => src.Availabilities.Any()? 
+                    new List<string> { src.Availabilities.First().Day1.ToString(), src.Availabilities.First().Day2.ToString() }: new List<string>()))
+                .ForMember(dest => dest.Availability, opt => opt.MapFrom(src => src.Availabilities.Any()? 
+                    $"{src.Availabilities.First().StartTime} - {src.Availabilities.First().EndTime}" : null));
 
             CreateMap<CreateDoctorDto, Doctor>()
                 .ForPath(dest => dest.User.FirstName, opt => opt.MapFrom(src => src.FirstName))
@@ -51,6 +56,17 @@ namespace ClinicProject1
             
             CreateMap<UpdateDoctorDto, User>()
                 .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
+
+            CreateMap<DoctorAvailability, DoctorAvailabilityDto>()
+                .ForMember(dest => dest.AvailableDays, opt => opt.MapFrom(src =>
+                    new List<string> { src.Day1.ToString(), src.Day2.ToString() }))
+                .ForMember(dest => dest.WorkingHours, opt => opt.MapFrom(src =>
+                    $"{src.StartTime} - {src.EndTime}"));
+
+            CreateMap<AssignAvailabilityDto, DoctorAvailability>()
+                .ForMember(dest => dest.Day1, opt => opt.MapFrom(src => src.AvailableDays[0]))
+                .ForMember(dest => dest.Day2, opt => opt.MapFrom(src => src.AvailableDays[1]))
+                .ForMember(dest => dest.IsAvailable, opt => opt.MapFrom(_ => true));
 
             // Appointment mappings
             CreateMap<CreateAppointmentDto, Appointment>()

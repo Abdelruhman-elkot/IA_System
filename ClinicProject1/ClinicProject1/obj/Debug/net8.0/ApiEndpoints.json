@@ -35,7 +35,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ClinicProject1.Models.Entities.Doctor",
+        "Type": "ClinicProject1.DTOs.DoctorDTOs.DoctorDashboardDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -381,6 +381,53 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ClinicProject1.Controllers.DoctorAvailabilityController",
+    "Method": "GetAvailability",
+    "RelativePath": "api/doctors/{doctorId}/availability",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ClinicProject1.DTOs.AvailabilityDTOs.DoctorAvailabilityDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ClinicProject1.Controllers.DoctorAvailabilityController",
+    "Method": "AssignAvailability",
+    "RelativePath": "api/doctors/{doctorId}/availability",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "ClinicProject1.DTOs.AvailabilityDTOs.AssignAvailabilityDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

@@ -18,7 +18,6 @@ namespace ClinicProject1.Controllers
         }
 
         #region Doctor Management
-
         [HttpGet("doctors")]
         public async Task<ActionResult<IEnumerable<DoctorDashboardDto>>> GetAllDoctors()
         {
@@ -35,7 +34,7 @@ namespace ClinicProject1.Controllers
         }
 
         [HttpPost("doctors")]
-        public async Task<ActionResult<Doctor>> CreateDoctor([FromBody] CreateDoctorDto doctorDto)
+        public async Task<ActionResult<DoctorDashboardDto>> CreateDoctor([FromBody] CreateDoctorDto doctorDto)
         {
             var doctor = await _adminService.CreateDoctor(doctorDto);
             return CreatedAtAction(nameof(GetDoctorById), new { doctorId = doctor.DoctorId }, doctor);

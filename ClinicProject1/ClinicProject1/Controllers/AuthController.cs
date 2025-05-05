@@ -24,13 +24,13 @@ namespace ClinicProject1.Controllers
 
             if (validUser != null)
             {
-                var token = generateToken(validUser.Username, validUser.Role);
+                var token = generateToken(validUser.Username, validUser.Role, validUser.UserId); 
                 return Ok(token);
             }
             return Unauthorized("wrong password or username");
         }
 
-        private ActionResult<String> generateToken(string username, Role role)
+        private ActionResult<String> generateToken(string username, Role role, int id)
         {
             var key = Encoding.UTF8.GetBytes(jwtOptions.SigningKey);
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -47,7 +47,8 @@ namespace ClinicProject1.Controllers
                 Subject = new ClaimsIdentity(new Claim[]
                     {
                         new(ClaimTypes.Name, username),
-                        new(ClaimTypes.Role, role.ToString())
+                        new(ClaimTypes.Role, role.ToString()),
+                        new(ClaimTypes.NameIdentifier, id.ToString())
                     })
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

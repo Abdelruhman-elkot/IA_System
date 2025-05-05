@@ -15,6 +15,7 @@ namespace ClinicProject1.Data
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<MedicalRecord> MedicalRecords { get; set; }
         public DbSet<DoctorAvailability> DoctorAvailability { get; set; }
+        public DbSet<chatHistory> chatsHistories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -61,6 +62,11 @@ namespace ClinicProject1.Data
                 .HasOne(d => d.Doctor)
                 .WithMany(d => d.Availabilities)
                 .HasForeignKey(d => d.DoctorId);
+
+            //modelBuilder.Entity<Patient>()
+            //    .ToTable(tb => tb.HasCheckConstraint(
+            //        name: "CK_chronicDiseases",
+            //        sql: "ChronicDiseases IS NULL OR chronicDiseases IN ('blood pressure', 'diabetes', 'none')"));
         }
 
     }

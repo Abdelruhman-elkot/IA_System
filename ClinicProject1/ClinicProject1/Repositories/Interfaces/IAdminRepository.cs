@@ -1,5 +1,4 @@
-﻿using ClinicProject1.Data.Enums;
-using ClinicProject1.Models.Entities;
+﻿using ClinicProject1.Models.Entities;
 
 namespace ClinicProject1.Repositories.Interfaces
 {

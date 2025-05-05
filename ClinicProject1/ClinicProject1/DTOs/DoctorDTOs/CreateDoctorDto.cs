@@ -13,9 +13,6 @@ namespace ClinicProject1.DTOs.Doctor_DTOs
         public string LastName { get; set; }
 
         [Required]
-        public string UserName { get; set; }
-
-        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
