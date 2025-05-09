@@ -13,7 +13,7 @@ using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("86702782-f020-44b1-98e0-81bd138dc71e")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClinicProject1")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6849cdf9b6021831bda7d2f7f5138241d8830a17")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClinicProject1")]

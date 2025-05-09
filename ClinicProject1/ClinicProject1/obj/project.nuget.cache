@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SMUDjqoWX4c=",
+  "dgSpecHash": "acdmrrRvFDE=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\ClinicProject1\\ClinicProject1\\ClinicProject1.csproj",
+  "projectFilePath": "D:\\GitHub\\IA_System\\ClinicProject1\\ClinicProject1\\ClinicProject1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\3bdo3\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\3bdo3\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
