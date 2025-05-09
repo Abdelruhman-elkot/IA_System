@@ -1,4 +1,4 @@
-﻿using ClinicProject1.Data.Enums;
+﻿using ClinicProject1.Models.Enums;
 
 namespace ClinicProject1.DTOs.ReportsDTOs
 {

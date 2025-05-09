@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using ClinicProject1.Data.Enums;
 using ClinicProject1.DTOs.AppointmentDtos;
 using ClinicProject1.Models.Entities;
+using ClinicProject1.Models.Enums;
 using ClinicProject1.Repositories.Interfaces;
 using ClinicProject1.Services.Interfaces;
 

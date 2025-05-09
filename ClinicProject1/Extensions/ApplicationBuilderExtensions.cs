@@ -1,6 +1,6 @@
 ﻿using ClinicProject1.Data;
-using ClinicProject1.Data.Enums;
 using ClinicProject1.Models.Entities;
+using ClinicProject1.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClinicProject1.Extensions
@@ -233,7 +233,7 @@ namespace ClinicProject1.Extensions
                     DoctorId = doctors[0].DoctorId,
                     AppointmentDay = WorkDays.Wednesday,
                     Time = AppointmentTimes.Time_0900,
-                    Status = AppointmentStatus.Rescheduled
+                    Status = AppointmentStatus.Pending
                 },
                 new()
                 {

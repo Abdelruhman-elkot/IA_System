@@ -18,12 +18,12 @@ namespace ClinicProject1.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Doctor")]
+        //[Authorize(Roles = "Doctor")]
         [Route("viewPatientsData")]
         public async Task<ActionResult> viewPatientsData()
         {
             var patients = await _context.Patients
-                .Select(p => new { p.User.Username, p.MedicalComplaint })
+                .Select(p => new { p.PatientId, p.User.Username, p.MedicalComplaint })
                 .ToListAsync();
             return Ok(patients);
         }

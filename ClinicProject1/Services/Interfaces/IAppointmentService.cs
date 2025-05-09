@@ -1,5 +1,4 @@
-﻿using ClinicProject1.Data.Enums;
-using ClinicProject1.DTOs.AppointmentDtos;
+﻿using ClinicProject1.DTOs.AppointmentDtos;
 
 namespace ClinicProject1.Services.Interfaces
 {

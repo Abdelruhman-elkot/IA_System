@@ -1,6 +1,6 @@
-﻿using ClinicProject1.Data.Enums;
-using ClinicProject1.DTOs.AppointmentDtos;
+﻿using ClinicProject1.DTOs.AppointmentDtos;
 using ClinicProject1.Models.Entities;
+using ClinicProject1.Models.Enums;
 
 namespace ClinicProject1.Repositories.Interfaces
 {

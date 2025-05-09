@@ -1,6 +1,5 @@
-﻿using ClinicProject1.Data.Enums;
+﻿using ClinicProject1.Models.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace ClinicProject1.Models.Entities
 {

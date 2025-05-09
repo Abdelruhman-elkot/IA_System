@@ -1,8 +1,8 @@
 ﻿using ClinicProject1.Data;
-using ClinicProject1.Data.Enums;
 using ClinicProject1.DTOs.AuthDTOs;
 using ClinicProject1.Extensions;
 using ClinicProject1.Models.Entities;
+using ClinicProject1.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

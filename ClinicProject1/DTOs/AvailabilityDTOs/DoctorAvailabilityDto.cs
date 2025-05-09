@@ -1,6 +1,4 @@
-﻿using ClinicProject1.Data.Enums;
-
-namespace ClinicProject1.DTOs.AvailabilityDTOs
+﻿namespace ClinicProject1.DTOs.AvailabilityDTOs
 {
     public class DoctorAvailabilityDto
     {

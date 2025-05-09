@@ -1,8 +1,6 @@
-﻿using ClinicProject1.DTOs.AvailabilityDTOs;
-using ClinicProject1.DTOs.Doctor_DTOs;
+﻿using ClinicProject1.DTOs.Doctor_DTOs;
 using ClinicProject1.DTOs.DoctorDTOs;
 using ClinicProject1.DTOs.ReportsDTOs;
-using ClinicProject1.Models.Entities;
 
 namespace ClinicProject1.Services.Interfaces
 {

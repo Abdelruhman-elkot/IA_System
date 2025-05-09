@@ -1,5 +1,5 @@
-﻿using ClinicProject1.Data.Enums;
-using ClinicProject1.Models.Entities;
+﻿using ClinicProject1.Models.Entities;
+using ClinicProject1.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace ClinicProject1.DTOs.Doctor_DTOs

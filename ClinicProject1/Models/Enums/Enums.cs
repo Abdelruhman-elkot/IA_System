@@ -1,4 +1,4 @@
-﻿namespace ClinicProject1.Data.Enums
+﻿namespace ClinicProject1.Models.Enums
 {
     public enum Role
     {
@@ -30,6 +30,7 @@
     {
         Pending,
         Approved,
+        Completed,
         Rescheduled,
         Canceled
     }
@@ -43,7 +44,7 @@
         Thursday,
         Saturday
     }
-    
+
     public enum AppointmentTimes
     {
         Time_0500,

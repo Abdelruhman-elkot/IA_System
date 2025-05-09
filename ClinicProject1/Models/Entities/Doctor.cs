@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using ClinicProject1.Data.Enums;
+using ClinicProject1.Models.Enums;
 
 namespace ClinicProject1.Models.Entities
 {

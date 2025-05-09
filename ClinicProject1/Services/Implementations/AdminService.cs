@@ -4,9 +4,9 @@ using ClinicProject1.Services.Interfaces;
 using AutoMapper;
 using ClinicProject1.Repositories.Interfaces;
 using ClinicProject1.DTOs.DoctorDTOs;
-using ClinicProject1.Data.Enums;
 using ClinicProject1.DTOs.ReportsDTOs;
 using System.Text;
+using ClinicProject1.Models.Enums;
 
 namespace ClinicProject1.Services.Implementations
 {

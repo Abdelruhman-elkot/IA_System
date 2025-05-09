@@ -1,8 +1,8 @@
-﻿using ClinicProject1.Data.Enums;
-using ClinicProject1.Data;
+﻿using ClinicProject1.Data;
 using ClinicProject1.Models.Entities;
 using ClinicProject1.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using ClinicProject1.Models.Enums;
 
 namespace ClinicProject1.Repositories.Implementations
 {

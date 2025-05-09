@@ -1,4 +1,4 @@
-﻿using ClinicProject1.Data.Enums;
+﻿using ClinicProject1.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
