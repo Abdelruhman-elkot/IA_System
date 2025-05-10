@@ -1,4 +1,5 @@
 ﻿using ClinicProject1.Data;
+using ClinicProject1.Data.Enums;
 using ClinicProject1.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -73,6 +74,23 @@ namespace ClinicProject1.Controllers
 
             await _context.SaveChangesAsync();
             return Ok(medicalRecord.Prescription);
+        }
+
+        [HttpGet("getDoctorsBySpeciality/{speciality}")]
+        [Authorize(Roles = "Doctor")]
+        public async Task<ActionResult> getDoctorsBySpeciality(Specialization speciality)
+        {
+            var doctors = await _context.Doctors
+                .Where(d => d.Specialization == speciality)
+                .Include(d => d.Availabilities)
+                // patient.User is null unless lazy loading is enabled or explicitly " included "
+                .Select(d => new { d.User.Username, d.DoctorId , d.Availabilities})
+                .ToListAsync();
+            if (doctors.Count == 0)
+            {
+                return NotFound("No doctors found with the specified speciality");
+            }
+            return Ok(doctors);
         }
     }
 }

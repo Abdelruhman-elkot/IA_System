@@ -141,19 +141,19 @@ namespace ClinicProject1.Extensions
                 new(
                     new User
                     {
-                        Username = "Patient1",
+                        Username = "ganna wessam",
                         Photo = "patient1.jpg",
-                        Password = "Patient@123",
+                        Password = "ganna@123",
                         Role = Role.Patient,
-                        FirstName = "Patient",
-                        LastName = "1",
-                        Email = "Patient1@clinic.com",
-                        PhoneNumber = "1987654321"
+                        FirstName = "ganna",
+                        LastName = "wessam",
+                        Email = "ganna@clinic.com",
+                        PhoneNumber = "01207048248"
                     },
                     new Patient
                     {
-                        Age = 35,
-                        Gender = Gender.Male,
+                        Age = 20,
+                        Gender = Gender.Female,
                         ChronicDiseases = "Hypertension",
                         MedicalComplaint = "Routine checkup"
                     }
@@ -161,14 +161,14 @@ namespace ClinicProject1.Extensions
                 new(
                     new User
                     {
-                        Username = "Patient2",
+                        Username = "farah hossam",
                         Photo = "patient2.jpg",
-                        Password = "Patient@123",
+                        Password = "farah@123",
                         Role = Role.Patient,
-                        FirstName = "Patient",
-                        LastName = "2",
-                        Email = "Patient2@clinic.com",
-                        PhoneNumber = "1987654322"
+                        FirstName = "farah",
+                        LastName = "hossam",
+                        Email = "farah@clinic.com",
+                        PhoneNumber = "01014418986"
                     },
                     new Patient
                     {
@@ -233,7 +233,7 @@ namespace ClinicProject1.Extensions
                     DoctorId = doctors[0].DoctorId,
                     AppointmentDay = WorkDays.Wednesday,
                     Time = AppointmentTimes.Time_0900,
-                    Status = AppointmentStatus.Rescheduled
+                    Status = AppointmentStatus.Pending
                 },
                 new()
                 {
@@ -241,7 +241,7 @@ namespace ClinicProject1.Extensions
                     DoctorId = doctors[1].DoctorId,
                     AppointmentDay = WorkDays.Monday,
                     Time = AppointmentTimes.Time_0830,
-                    Status = AppointmentStatus.Approved
+                    Status = AppointmentStatus.Rescheduled
                 },
                 new()
                 {

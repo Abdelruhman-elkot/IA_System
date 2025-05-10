@@ -1,6 +1,9 @@
-﻿using ClinicProject1.DTOs.AppointmentDtos;
+﻿using ClinicProject1.Data;
+using ClinicProject1.DTOs.AppointmentDtos;
+using ClinicProject1.MicroService;
 using ClinicProject1.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClinicProject1.Controllers
 {
@@ -9,12 +12,34 @@ namespace ClinicProject1.Controllers
     public class AppointmentsController : ControllerBase
     {
         private readonly IAppointmentService _appointmentService;
+        private readonly ClinicDbContext _context;
+        private readonly WhatsAppService _whatsAppService;
 
-        public AppointmentsController(IAppointmentService appointmentService)
+        public AppointmentsController(IAppointmentService appointmentService, WhatsAppService whatsAppService, ClinicDbContext context)
         {
             _appointmentService = appointmentService;
+            _whatsAppService = whatsAppService;
+            _context = context;
         }
 
+        [HttpGet("phoneNumberByAppointmentId")]
+        public async Task<string> phoneNumberByAppointmentId(int appointmentId)
+        {
+            var appointment = await _context.Appointments.FindAsync(appointmentId);
+            if (appointment != null)
+            {
+                var patient = await _context.Patients
+                    .Include(d => d.User)
+                    //Generates a JOIN in SQL to pull related data in one go — avoiding extra queries or lazy loading.
+                    .FirstOrDefaultAsync(p => p.PatientId == appointment.PatientId);
+                if (patient != null)
+                {
+                    return patient.User.PhoneNumber;
+                }
+            }
+
+            return "no patient assigned to this appointment";
+        }
         [HttpGet]
         public async Task<ActionResult<AppointmentDashboardDto>> GetAllAppointments()
         {
@@ -43,7 +68,18 @@ namespace ClinicProject1.Controllers
             try
             {
                 await _appointmentService.ApproveAppointment(appointmentId);
-                return NoContent();
+                var phoneNumber = await phoneNumberByAppointmentId(appointmentId);
+                try
+                {
+                    var result = _whatsAppService.SendMessage(phoneNumber);
+                    return Ok(result);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+                ////return NoContent();
+                //return Ok(phoneNumber);
             }
             catch (KeyNotFoundException ex)
             {
@@ -103,7 +139,7 @@ namespace ClinicProject1.Controllers
 
         [HttpPut("{appointmentId}/reschedule")]
         public async Task<ActionResult<AppointmentDashboardDto>> RescheduleAppointment(
-    int appointmentId, [FromBody] RescheduleAppointmentDto rescheduleDto)
+            int appointmentId, [FromBody] RescheduleAppointmentDto rescheduleDto)
         {
             try
             {

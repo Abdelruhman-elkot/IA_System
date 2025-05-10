@@ -109,6 +109,53 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ClinicProject1.Controllers.DoctorAvailabilityController",
+    "Method": "GetAvailability",
+    "RelativePath": "api/Admin/doctors/{doctorId}/availability",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ClinicProject1.DTOs.AvailabilityDTOs.DoctorAvailabilityDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ClinicProject1.Controllers.DoctorAvailabilityController",
+    "Method": "AssignAvailability",
+    "RelativePath": "api/Admin/doctors/{doctorId}/availability",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "ClinicProject1.DTOs.AvailabilityDTOs.AssignAvailabilityDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ClinicProject1.Controllers.AppointmentsController",
     "Method": "GetAllAppointments",
     "RelativePath": "api/Appointments",
@@ -296,6 +343,32 @@
     ]
   },
   {
+    "ContainingType": "ClinicProject1.Controllers.AppointmentsController",
+    "Method": "phoneNumberByAppointmentId",
+    "RelativePath": "api/Appointments/phoneNumberByAppointmentId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ClinicProject1.Controllers.AuthController",
     "Method": "login",
     "RelativePath": "api/Auth/login",
@@ -314,6 +387,26 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ClinicProject1.Controllers.AuthController",
+    "Method": "logOut",
+    "RelativePath": "api/Auth/logOut",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.String",
@@ -354,6 +447,22 @@
   },
   {
     "ContainingType": "ClinicProject1.Controllers.DoctorController",
+    "Method": "getDoctorsBySpeciality",
+    "RelativePath": "api/Doctor/getDoctorsBySpeciality/{speciality}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "speciality",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ClinicProject1.Controllers.DoctorController",
     "Method": "updatePrescription",
     "RelativePath": "api/Doctor/updatePrescription/{patientId}",
     "HttpMethod": "PATCH",
@@ -381,53 +490,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ClinicProject1.Controllers.DoctorAvailabilityController",
-    "Method": "GetAvailability",
-    "RelativePath": "api/doctors/{doctorId}/availability",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "doctorId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "ClinicProject1.DTOs.AvailabilityDTOs.DoctorAvailabilityDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ClinicProject1.Controllers.DoctorAvailabilityController",
-    "Method": "AssignAvailability",
-    "RelativePath": "api/doctors/{doctorId}/availability",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "doctorId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "dto",
-        "Type": "ClinicProject1.DTOs.AvailabilityDTOs.AssignAvailabilityDto",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {

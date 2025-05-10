@@ -190,6 +190,45 @@
         }
       }
     },
+    "/api/Appointments/phoneNumberByAppointmentId": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "parameters": [
+          {
+            "name": "appointmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Appointments": {
       "get": {
         "tags": [
@@ -603,6 +642,35 @@
         }
       }
     },
+    "/api/Auth/logOut": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Doctor/viewPatientsData": {
       "get": {
         "tags": [
@@ -657,7 +725,29 @@
         }
       }
     },
-    "/api/doctors/{doctorId}/availability": {
+    "/api/Doctor/getDoctorsBySpeciality/{speciality}": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "parameters": [
+          {
+            "name": "speciality",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Specialization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/doctors/{doctorId}/availability": {
       "get": {
         "tags": [
           "DoctorAvailability"

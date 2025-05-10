@@ -2,7 +2,7 @@
 using ClinicProject1.DTOs.Doctor_DTOs;
 using ClinicProject1.Services.Interfaces;
 using ClinicProject1.DTOs.DoctorDTOs;
-using ClinicProject1.Models.Entities;
+
 
 namespace ClinicProject1.Controllers
 {
@@ -12,7 +12,8 @@ namespace ClinicProject1.Controllers
     {
         private readonly IAdminService _adminService;
 
-        public AdminController(IAdminService adminService)
+
+        public AdminController(IAdminService adminService )
         {
             _adminService = adminService;
         }
@@ -56,5 +57,7 @@ namespace ClinicProject1.Controllers
             return NoContent();
         }
         #endregion
+
+        
     }
 }

@@ -1,10 +1,12 @@
 using ClinicProject1;
 using ClinicProject1.Data;
 using ClinicProject1.Extensions;
+using ClinicProject1.MicroService;
 using ClinicProject1.Repositories.Implementations;
 using ClinicProject1.Repositories.Interfaces;
 using ClinicProject1.Services.Implementations;
 using ClinicProject1.Services.Interfaces;
+//using ClinicProject1.MicroServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -57,6 +59,7 @@ builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
 
 builder.Services.AddScoped<WebSocketService>();
+builder.Services.AddScoped<WhatsAppService>();
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
