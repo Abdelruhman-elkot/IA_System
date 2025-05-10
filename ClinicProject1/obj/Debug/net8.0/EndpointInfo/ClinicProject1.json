@@ -1090,7 +1090,7 @@
           "availableDays": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/WorkDays"
+              "type": "string"
             },
             "nullable": true
           },

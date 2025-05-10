@@ -39,7 +39,7 @@ namespace ClinicProject1.Controllers
                 if (availability == null)
                     return NotFound("Doctor availability not found");
 
-                if (!availability.AvailableDays.Contains(day))
+                if (!availability.AvailableDays.Contains(day.ToString()))
                     return BadRequest("The selected day is not available for this doctor");
 
                 return Ok(availability.AvailableTimeSlots[day.ToString()]);
@@ -51,8 +51,7 @@ namespace ClinicProject1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AssignAvailability(
-            int doctorId, [FromBody] AssignAvailabilityDto dto)
+        public async Task<IActionResult> AssignAvailability(int doctorId, [FromBody] AssignAvailabilityDto dto)
         {
             try
             {

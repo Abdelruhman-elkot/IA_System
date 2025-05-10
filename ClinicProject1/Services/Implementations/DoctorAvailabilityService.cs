@@ -39,7 +39,7 @@ namespace ClinicProject1.Services.Implementations
             var dto = new DoctorAvailabilityDto
             {
                 DoctorId = doctorId,
-                AvailableDays = new List<WorkDays> { availability.Day1, availability.Day2 },
+                AvailableDays = new List<String> { availability.Day1.ToString(), availability.Day2.ToString() },
                 WorkingHours = $"{availability.StartTime} - {availability.EndTime}",
                 IsAvailable = availability.IsAvailable,
                 AvailableTimeSlots = new Dictionary<string, List<string>>()
@@ -50,7 +50,7 @@ namespace ClinicProject1.Services.Implementations
             foreach (var day in dto.AvailableDays)
             {
                 var dayAppointments = appointments
-                    .Where(a => a.AppointmentDay == day)
+                    .Where(a => a.AppointmentDay.ToString() == day)
                     .ToList();
 
                 var allTimeSlots = Enum.GetValues(typeof(AppointmentTimes))
