@@ -963,6 +963,10 @@
           "status": {
             "type": "string",
             "nullable": true
+          },
+          "doctorId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

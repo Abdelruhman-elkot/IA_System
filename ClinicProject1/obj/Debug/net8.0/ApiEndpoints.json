@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.DTOs.DoctorDTOs.DoctorDashboardDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.Models.DTOs.DoctorDTOs.DoctorDashboardDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -29,13 +29,13 @@
     "Parameters": [
       {
         "Name": "doctorDto",
-        "Type": "ClinicProject1.DTOs.Doctor_DTOs.CreateDoctorDto",
+        "Type": "ClinicProject1.Models.DTOs.DoctorDTOs.CreateDoctorDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "ClinicProject1.DTOs.DoctorDTOs.DoctorDashboardDto",
+        "Type": "ClinicProject1.Models.DTOs.DoctorDTOs.DoctorDashboardDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -61,7 +61,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ClinicProject1.DTOs.DoctorDTOs.DoctorDashboardDto",
+        "Type": "ClinicProject1.Models.DTOs.DoctorDTOs.DoctorDashboardDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -86,7 +86,7 @@
       },
       {
         "Name": "doctorDto",
-        "Type": "ClinicProject1.DTOs.Doctor_DTOs.UpdateDoctorDto",
+        "Type": "ClinicProject1.Models.DTOs.DoctorDTOs.UpdateDoctorDto",
         "IsRequired": true
       }
     ],
@@ -124,7 +124,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ClinicProject1.DTOs.AvailabilityDTOs.DoctorAvailabilityDto",
+        "Type": "ClinicProject1.Models.DTOs.AvailabilityDTOs.DoctorAvailabilityDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -149,7 +149,7 @@
       },
       {
         "Name": "dto",
-        "Type": "ClinicProject1.DTOs.AvailabilityDTOs.AssignAvailabilityDto",
+        "Type": "ClinicProject1.Models.DTOs.AvailabilityDTOs.AssignAvailabilityDto",
         "IsRequired": true
       }
     ],
@@ -196,7 +196,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.DTOs.ReportsDTOs.DoctorScheduleReportDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.Models.DTOs.ReportsDTOs.DoctorScheduleReportDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -226,7 +226,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.DTOs.ReportsDTOs.PatientVisitReportDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.Models.DTOs.ReportsDTOs.PatientVisitReportDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -256,7 +256,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "ClinicProject1.DTOs.AppointmentDtos.AppointmentDashboardDto",
+        "Type": "ClinicProject1.Models.DTOs.AppointmentDtos.AppointmentDashboardDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -282,7 +282,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ClinicProject1.DTOs.AppointmentDtos.AppointmentDashboardDto",
+        "Type": "ClinicProject1.Models.DTOs.AppointmentDtos.AppointmentDashboardDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -339,13 +339,13 @@
       },
       {
         "Name": "rescheduleDto",
-        "Type": "ClinicProject1.DTOs.AppointmentDtos.RescheduleAppointmentDto",
+        "Type": "ClinicProject1.Models.DTOs.AppointmentDtos.RescheduleAppointmentDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "ClinicProject1.DTOs.AppointmentDtos.AppointmentDashboardDto",
+        "Type": "ClinicProject1.Models.DTOs.AppointmentDtos.AppointmentDashboardDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -365,13 +365,13 @@
     "Parameters": [
       {
         "Name": "appointmentDto",
-        "Type": "ClinicProject1.DTOs.AppointmentDtos.CreateAppointmentDto",
+        "Type": "ClinicProject1.Models.DTOs.AppointmentDtos.CreateAppointmentDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "ClinicProject1.DTOs.AppointmentDtos.AppointmentDashboardDto",
+        "Type": "ClinicProject1.Models.DTOs.AppointmentDtos.AppointmentDashboardDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -397,7 +397,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.DTOs.AppointmentDtos.AppointmentDashboardDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.Models.DTOs.AppointmentDtos.AppointmentDashboardDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -423,7 +423,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.DTOs.AppointmentDtos.AppointmentDashboardDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClinicProject1.Models.DTOs.AppointmentDtos.AppointmentDashboardDto, ClinicProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -474,7 +474,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ClinicProject1.DTOs.AuthDTOs.RegisterPatientDto",
+        "Type": "ClinicProject1.Models.DTOs.AuthDTOs.RegisterPatientDto",
         "IsRequired": true
       }
     ],
@@ -537,7 +537,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ClinicProject1.DTOs.MedicalRecordDTOs.PatientMedicalHistoryDto",
+        "Type": "ClinicProject1.Models.DTOs.MedicalRecordDTOs.PatientMedicalHistoryDto",
         "MediaTypes": [
           "text/plain",
           "application/json",

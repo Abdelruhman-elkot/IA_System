@@ -82,7 +82,8 @@ namespace ClinicProject1
                 .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor.User.FirstName + " " + src.Doctor.User.LastName))
                 .ForMember(dest => dest.AppointmentDay, opt => opt.MapFrom(src => src.AppointmentDay.ToString()))
                 .ForMember(dest => dest.AppointmentTime, opt => opt.MapFrom(src => FormatTime(src.Time)))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()));
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
+                .ForMember(dest => dest.DoctorId, opt => opt.MapFrom(src => src.DoctorId));
 
             CreateMap<MedicalRecord, MedicalRecordDto>();
 

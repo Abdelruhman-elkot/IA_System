@@ -13,5 +13,7 @@
         public string AppointmentTime { get; set; }
 
         public string Status { get; set; }
+
+        public int DoctorId { get; set; }
     }
 }

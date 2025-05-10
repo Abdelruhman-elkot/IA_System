@@ -1,5 +1,4 @@
-﻿using ClinicProject1.DTOs.ReportsDTOs;
-using ClinicProject1.Models.Entities;
+﻿using ClinicProject1.Models.Entities;
 
 namespace ClinicProject1.Repositories.Interfaces
 {
