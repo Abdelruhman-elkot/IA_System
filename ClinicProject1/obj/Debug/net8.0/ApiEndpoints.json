@@ -514,11 +514,17 @@
   {
     "ContainingType": "ClinicProject1.Controllers.DoctorController",
     "Method": "viewPatientsData",
-    "RelativePath": "api/Doctor/viewPatientsData",
+    "RelativePath": "api/Doctor/viewPatientsData/{doctorId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

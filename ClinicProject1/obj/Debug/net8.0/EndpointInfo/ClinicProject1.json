@@ -703,10 +703,21 @@
         }
       }
     },
-    "/api/Doctor/viewPatientsData": {
+    "/api/Doctor/viewPatientsData/{doctorId}": {
       "get": {
         "tags": [
           "Doctor"
+        ],
+        "parameters": [
+          {
+            "name": "doctorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {

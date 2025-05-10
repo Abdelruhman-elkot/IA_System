@@ -19,12 +19,20 @@ namespace ClinicProject1.Controllers
 
         [HttpGet]
         //[Authorize(Roles = "Doctor")]
-        [Route("viewPatientsData")]
-        public async Task<ActionResult> viewPatientsData()
+        [Route("viewPatientsData/{doctorId}")]
+        public async Task<ActionResult> viewPatientsData(int doctorId)
         {
-            var patients = await _context.Patients
-                .Select(p => new { p.PatientId, p.User.Username, p.MedicalComplaint })
+            var doctorExists = await _context.Doctors.AnyAsync(d => d.DoctorId == doctorId);
+            if (!doctorExists)
+            {
+                return NotFound("Doctor not found");
+            }
+
+            var patients = await _context.MedicalRecords
+                .Where(p => p.DoctorId == doctorId) 
+                .Select(p => new { p.PatientId, p.Patient.User.Username, p.Patient.MedicalComplaint })
                 .ToListAsync();
+
             return Ok(patients);
         }
 
