@@ -190,6 +190,106 @@
         }
       }
     },
+    "/api/Admin/reports/doctor-schedules": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DoctorScheduleReportDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DoctorScheduleReportDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DoctorScheduleReportDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/reports/patient-visits": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PatientVisitReportDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PatientVisitReportDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PatientVisitReportDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/reports/doctor-schedules/pdf": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/reports/patient-visits/pdf": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Appointments/phoneNumberByAppointmentId": {
       "get": {
         "tags": [
@@ -671,10 +771,21 @@
         }
       }
     },
-    "/api/Doctor/viewPatientsData": {
+    "/api/Doctor/viewPatientsData/{doctorId}": {
       "get": {
         "tags": [
           "Doctor"
+        ],
+        "parameters": [
+          {
+            "name": "doctorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -827,6 +938,63 @@
         }
       }
     },
+    "/api/Admin/doctors/{doctorId}/availability/timeslots/{day}": {
+      "get": {
+        "tags": [
+          "DoctorAvailability"
+        ],
+        "parameters": [
+          {
+            "name": "doctorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "day",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/WorkDays"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/MedicalRecords/patient/{patientId}": {
       "get": {
         "tags": [
@@ -896,6 +1064,10 @@
           "status": {
             "type": "string",
             "nullable": true
+          },
+          "doctorId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1015,6 +1187,19 @@
           "workingHours": {
             "type": "string",
             "nullable": true
+          },
+          "isAvailable": {
+            "type": "boolean"
+          },
+          "availableTimeSlots": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1056,6 +1241,35 @@
         },
         "additionalProperties": false
       },
+      "DoctorScheduleReportDto": {
+        "type": "object",
+        "properties": {
+          "doctorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "specialization": {
+            "type": "string",
+            "nullable": true
+          },
+          "availableDays": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "workingHours": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalAppointments": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "Gender": {
         "enum": [
           0,
@@ -1072,6 +1286,14 @@
             "format": "int32"
           },
           "doctorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          },
+          "specialization": {
             "type": "string",
             "nullable": true
           },
@@ -1110,6 +1332,36 @@
             "items": {
               "$ref": "#/components/schemas/MedicalRecordDto"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PatientVisitReportDto": {
+        "type": "object",
+        "properties": {
+          "patientName": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalVisits": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastVisitDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "mostCommonComplaint": {
+            "type": "string",
             "nullable": true
           }
         },

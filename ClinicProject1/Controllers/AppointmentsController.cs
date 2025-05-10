@@ -74,7 +74,7 @@ namespace ClinicProject1.Controllers
                 {
                     var result = _whatsAppService.SendMessage(phoneNumber);
                     var appointment = await _appointmentService.GetAppointmentById(appointmentId);
-                    return Ok(appointment,result);
+                    return Ok(appointment);
                     // return Ok(result);
                 }
                 catch (Exception ex)

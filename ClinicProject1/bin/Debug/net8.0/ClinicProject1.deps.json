@@ -19,6 +19,7 @@
           "Selenium.WebDriver": "4.31.0",
           "SendGrid": "9.29.3",
           "Swashbuckle.AspNetCore": "8.1.1",
+          "Twilio": "7.11.0",
           "WkHtmlToPdf": "1.0.2"
         },
         "runtime": {
@@ -120,6 +121,14 @@
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
+      "Microsoft.Bcl.Memory/9.0.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Bcl.Memory.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.24.52809"
           }
         }
       },
@@ -416,7 +425,7 @@
           "Azure.Identity": "1.11.4",
           "Microsoft.Data.SqlClient.SNI.runtime": "5.1.1",
           "Microsoft.Identity.Client": "4.61.3",
-          "Microsoft.IdentityModel.JsonWebTokens": "7.1.2",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.3.1",
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2",
           "Microsoft.SqlServer.Server": "1.0.0",
           "System.Configuration.ConfigurationManager": "6.0.1",
@@ -670,7 +679,7 @@
       },
       "Microsoft.Identity.Client/4.61.3": {
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "7.1.2",
+          "Microsoft.IdentityModel.Abstractions": "8.3.1",
           "System.Diagnostics.DiagnosticSource": "9.0.4"
         },
         "runtime": {
@@ -692,40 +701,40 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Abstractions/7.1.2": {
+      "Microsoft.IdentityModel.Abstractions/8.3.1": {
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
-            "assemblyVersion": "7.1.2.0",
-            "fileVersion": "7.1.2.41121"
+            "assemblyVersion": "8.3.1.0",
+            "fileVersion": "8.3.1.60117"
           }
         }
       },
-      "Microsoft.IdentityModel.JsonWebTokens/7.1.2": {
+      "Microsoft.IdentityModel.JsonWebTokens/8.3.1": {
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "7.1.2"
+          "Microsoft.IdentityModel.Tokens": "8.3.1"
         },
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
-            "assemblyVersion": "7.1.2.0",
-            "fileVersion": "7.1.2.41121"
+            "assemblyVersion": "8.3.1.0",
+            "fileVersion": "8.3.1.60117"
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/7.1.2": {
+      "Microsoft.IdentityModel.Logging/8.3.1": {
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "7.1.2"
+          "Microsoft.IdentityModel.Abstractions": "8.3.1"
         },
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
-            "assemblyVersion": "7.1.2.0",
-            "fileVersion": "7.1.2.41121"
+            "assemblyVersion": "8.3.1.0",
+            "fileVersion": "8.3.1.60117"
           }
         }
       },
       "Microsoft.IdentityModel.Protocols/7.1.2": {
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "7.1.2",
-          "Microsoft.IdentityModel.Tokens": "7.1.2"
+          "Microsoft.IdentityModel.Logging": "8.3.1",
+          "Microsoft.IdentityModel.Tokens": "8.3.1"
         },
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.Protocols.dll": {
@@ -737,7 +746,7 @@
       "Microsoft.IdentityModel.Protocols.OpenIdConnect/7.1.2": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols": "7.1.2",
-          "System.IdentityModel.Tokens.Jwt": "7.1.2"
+          "System.IdentityModel.Tokens.Jwt": "8.3.1"
         },
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {
@@ -746,14 +755,16 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/7.1.2": {
+      "Microsoft.IdentityModel.Tokens/8.3.1": {
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "7.1.2"
+          "Microsoft.Bcl.Memory": "9.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.4",
+          "Microsoft.IdentityModel.Logging": "8.3.1"
         },
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
-            "assemblyVersion": "7.1.2.0",
-            "fileVersion": "7.1.2.41121"
+            "assemblyVersion": "8.3.1.0",
+            "fileVersion": "8.3.1.60117"
           }
         }
       },
@@ -1011,6 +1022,27 @@
         }
       },
       "System.Collections.Immutable/7.0.0": {},
+      "System.Collections.NonGeneric/4.3.0": {
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Threading": "4.3.0"
+        }
+      },
+      "System.Collections.Specialized/4.3.0": {
+        "dependencies": {
+          "System.Collections.NonGeneric": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Globalization.Extensions": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Threading": "4.3.0"
+        }
+      },
       "System.Composition/7.0.0": {
         "dependencies": {
           "System.Composition.AttributedModel": "7.0.0",
@@ -1169,7 +1201,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Globalization.Extensions/4.0.1": {
+      "System.Globalization.Extensions/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "System.Globalization": "4.3.0",
@@ -1179,15 +1211,15 @@
           "System.Runtime.InteropServices": "4.3.0"
         }
       },
-      "System.IdentityModel.Tokens.Jwt/7.1.2": {
+      "System.IdentityModel.Tokens.Jwt/8.3.1": {
         "dependencies": {
-          "Microsoft.IdentityModel.JsonWebTokens": "7.1.2",
-          "Microsoft.IdentityModel.Tokens": "7.1.2"
+          "Microsoft.IdentityModel.JsonWebTokens": "8.3.1",
+          "Microsoft.IdentityModel.Tokens": "8.3.1"
         },
         "runtime": {
           "lib/net8.0/System.IdentityModel.Tokens.Jwt.dll": {
-            "assemblyVersion": "7.1.2.0",
-            "fileVersion": "7.1.2.41121"
+            "assemblyVersion": "8.3.1.0",
+            "fileVersion": "8.3.1.60117"
           }
         }
       },
@@ -1307,7 +1339,7 @@
           "System.Diagnostics.DiagnosticSource": "9.0.4",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
-          "System.Globalization.Extensions": "4.0.1",
+          "System.Globalization.Extensions": "4.3.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem": "4.0.1",
           "System.Net.Primitives": "4.0.11",
@@ -1775,6 +1807,20 @@
           "System.Xml.ReaderWriter": "4.0.11"
         }
       },
+      "Twilio/7.11.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "8.3.1",
+          "Newtonsoft.Json": "13.0.1",
+          "System.Collections.Specialized": "4.3.0",
+          "System.IdentityModel.Tokens.Jwt": "8.3.1"
+        },
+        "runtime": {
+          "lib/net6.0/Twilio.dll": {
+            "assemblyVersion": "7.11.0.0",
+            "fileVersion": "7.11.0.0"
+          }
+        }
+      },
       "WkHtmlToPdf/1.0.2": {
         "runtime": {
           "lib/netstandard2.0/WkHtmlToPdf.dll": {
@@ -1846,6 +1892,13 @@
       "sha512": "sha512-3aeMZ1N0lJoSyzqiP03hqemtb1BijhsJADdobn/4nsMJ8V1H+CrpuduUe4hlRdx+ikBQju1VGjMD1GJ3Sk05Eg==",
       "path": "microsoft.bcl.asyncinterfaces/7.0.0",
       "hashPath": "microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Bcl.Memory/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bTUtGfpGyJnohQzjdXbtc7MqNzkv7CWUSRz54+ucNm0i32rZiIU0VdVPHDBShOl1qhVKRjW8mnEBz3d2vH93tQ==",
+      "path": "microsoft.bcl.memory/9.0.0",
+      "hashPath": "microsoft.bcl.memory.9.0.0.nupkg.sha512"
     },
     "Microsoft.Build.Framework/17.8.3": {
       "type": "package",
@@ -2057,26 +2110,26 @@
       "path": "microsoft.identity.client.extensions.msal/4.61.3",
       "hashPath": "microsoft.identity.client.extensions.msal.4.61.3.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Abstractions/7.1.2": {
+    "Microsoft.IdentityModel.Abstractions/8.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-33eTIA2uO/L9utJjZWbKsMSVsQf7F8vtd6q5mQX7ZJzNvCpci5fleD6AeANGlbbb7WX7XKxq9+Dkb5e3GNDrmQ==",
-      "path": "microsoft.identitymodel.abstractions/7.1.2",
-      "hashPath": "microsoft.identitymodel.abstractions.7.1.2.nupkg.sha512"
+      "sha512": "sha512-oXYKRcTS0DTIB5vZenGy9oceD8awhjnXFFabc/IWBwluMA03SGvazCFyUIQ2mJOIOSf9lLyM971nbTj9qZgEJg==",
+      "path": "microsoft.identitymodel.abstractions/8.3.1",
+      "hashPath": "microsoft.identitymodel.abstractions.8.3.1.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.JsonWebTokens/7.1.2": {
+    "Microsoft.IdentityModel.JsonWebTokens/8.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cloLGeZolXbCJhJBc5OC05uhrdhdPL6MWHuVUnkkUvPDeK7HkwThBaLZ1XjBQVk9YhxXE2OvHXnKi0PLleXxDg==",
-      "path": "microsoft.identitymodel.jsonwebtokens/7.1.2",
-      "hashPath": "microsoft.identitymodel.jsonwebtokens.7.1.2.nupkg.sha512"
+      "sha512": "sha512-cA622rrXYdaO7inNZ8KY5leZpP6889wT+gHPgvy62PYlAITyxF9PxP5u+ecNBOsPx2PagBH7ZNr39yU/MOPn+w==",
+      "path": "microsoft.identitymodel.jsonwebtokens/8.3.1",
+      "hashPath": "microsoft.identitymodel.jsonwebtokens.8.3.1.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Logging/7.1.2": {
+    "Microsoft.IdentityModel.Logging/8.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YCxBt2EeJP8fcXk9desChkWI+0vFqFLvBwrz5hBMsoh0KJE6BC66DnzkdzkJNqMltLromc52dkdT206jJ38cTw==",
-      "path": "microsoft.identitymodel.logging/7.1.2",
-      "hashPath": "microsoft.identitymodel.logging.7.1.2.nupkg.sha512"
+      "sha512": "sha512-XCwbK7ErgZdrwl4ph+i8X5SCGwAepBFbsNIEceozGzrBFVvZbKKJE1WQOft9QyglP4me+DECdVVL8UnI6OO+sg==",
+      "path": "microsoft.identitymodel.logging/8.3.1",
+      "hashPath": "microsoft.identitymodel.logging.8.3.1.nupkg.sha512"
     },
     "Microsoft.IdentityModel.Protocols/7.1.2": {
       "type": "package",
@@ -2092,12 +2145,12 @@
       "path": "microsoft.identitymodel.protocols.openidconnect/7.1.2",
       "hashPath": "microsoft.identitymodel.protocols.openidconnect.7.1.2.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Tokens/7.1.2": {
+    "Microsoft.IdentityModel.Tokens/8.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oICJMqr3aNEDZOwnH5SK49bR6Z4aX0zEAnOLuhloumOSuqnNq+GWBdQyrgILnlcT5xj09xKCP/7Y7gJYB+ls/g==",
-      "path": "microsoft.identitymodel.tokens/7.1.2",
-      "hashPath": "microsoft.identitymodel.tokens.7.1.2.nupkg.sha512"
+      "sha512": "sha512-77GXREJzIDiKAc/RR8YE267bwzrxM4cjMRCzMQa0Xk1MUUdjx/JwjDJpUh00vT4oxcX5rjsMP0KLd8YjgR3N3w==",
+      "path": "microsoft.identitymodel.tokens/8.3.1",
+      "hashPath": "microsoft.identitymodel.tokens.8.3.1.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
@@ -2288,6 +2341,20 @@
       "path": "system.collections.immutable/7.0.0",
       "hashPath": "system.collections.immutable.7.0.0.nupkg.sha512"
     },
+    "System.Collections.NonGeneric/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
+      "path": "system.collections.nongeneric/4.3.0",
+      "hashPath": "system.collections.nongeneric.4.3.0.nupkg.sha512"
+    },
+    "System.Collections.Specialized/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
+      "path": "system.collections.specialized/4.3.0",
+      "hashPath": "system.collections.specialized.4.3.0.nupkg.sha512"
+    },
     "System.Composition/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -2400,19 +2467,19 @@
       "path": "system.globalization.calendars/4.0.1",
       "hashPath": "system.globalization.calendars.4.0.1.nupkg.sha512"
     },
-    "System.Globalization.Extensions/4.0.1": {
+    "System.Globalization.Extensions/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-KKo23iKeOaIg61SSXwjANN7QYDr/3op3OWGGzDzz7mypx0Za0fZSeG0l6cco8Ntp8YMYkIQcAqlk8yhm5/Uhcg==",
-      "path": "system.globalization.extensions/4.0.1",
-      "hashPath": "system.globalization.extensions.4.0.1.nupkg.sha512"
+      "sha512": "sha512-FhKmdR6MPG+pxow6wGtNAWdZh7noIOpdD5TwQ3CprzgIE1bBBoim0vbR1+AWsWjQmU7zXHgQo4TWSP6lCeiWcQ==",
+      "path": "system.globalization.extensions/4.3.0",
+      "hashPath": "system.globalization.extensions.4.3.0.nupkg.sha512"
     },
-    "System.IdentityModel.Tokens.Jwt/7.1.2": {
+    "System.IdentityModel.Tokens.Jwt/8.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Thhbe1peAmtSBFaV/ohtykXiZSOkx59Da44hvtWfIMFofDA3M3LaVyjstACf2rKGn4dEDR2cUpRAZ0Xs/zB+7Q==",
-      "path": "system.identitymodel.tokens.jwt/7.1.2",
-      "hashPath": "system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512"
+      "sha512": "sha512-SxdCv+SmnKOhUvryKvrpWJnkuVHj3hU8pUwj7R8zthi73TlBUlMyavon9qfuJsjnqY+L7jusp3Zo0fWFX6mwtw==",
+      "path": "system.identitymodel.tokens.jwt/8.3.1",
+      "hashPath": "system.identitymodel.tokens.jwt.8.3.1.nupkg.sha512"
     },
     "System.IO/4.3.0": {
       "type": "package",
@@ -2819,6 +2886,13 @@
       "sha512": "sha512-Mk2mKmPi0nWaoiYeotq1dgeNK1fqWh61+EK+w4Wu8SWuTYLzpUnschb59bJtGywaPq7SmTuPf44wrXRwbIrukg==",
       "path": "system.xml.xdocument/4.0.11",
       "hashPath": "system.xml.xdocument.4.0.11.nupkg.sha512"
+    },
+    "Twilio/7.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LUynW3j+prXiReXLCjeYmLwUVTjzX5dljy60yr/gaBQFAi8MC29NeWIhqZcjcm+crxMTFNWAMhjUy0tnCsZZDw==",
+      "path": "twilio/7.11.0",
+      "hashPath": "twilio.7.11.0.nupkg.sha512"
     },
     "WkHtmlToPdf/1.0.2": {
       "type": "package",
