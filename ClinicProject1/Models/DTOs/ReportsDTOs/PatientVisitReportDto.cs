@@ -1,4 +1,4 @@
-﻿namespace ClinicProject1.DTOs.ReportsDTOs
+﻿namespace ClinicProject1.Models.DTOs.ReportsDTOs
 {
     public class PatientVisitReportDto
     {

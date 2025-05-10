@@ -1,6 +1,6 @@
 ﻿using ClinicProject1.Data;
-using ClinicProject1.DTOs.AuthDTOs;
 using ClinicProject1.Extensions;
+using ClinicProject1.Models.DTOs.AuthDTOs;
 using ClinicProject1.Models.Entities;
 using ClinicProject1.Models.Enums;
 using Microsoft.AspNetCore.Mvc;

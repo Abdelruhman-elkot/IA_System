@@ -1,4 +1,4 @@
-﻿namespace ClinicProject1.DTOs.DoctorDTOs
+﻿namespace ClinicProject1.Models.DTOs.DoctorDTOs
 {
     public class DoctorDashboardDto
     {

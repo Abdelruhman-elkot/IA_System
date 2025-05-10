@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using ClinicProject1.DTOs.AvailabilityDTOs;
+using ClinicProject1.Models.DTOs.AvailabilityDTOs;
 using ClinicProject1.Models.Entities;
+using ClinicProject1.Models.Enums;
 using ClinicProject1.Repositories.Interfaces;
 using ClinicProject1.Services.Interfaces;
 
@@ -9,17 +10,20 @@ namespace ClinicProject1.Services.Implementations
     public class DoctorAvailabilityService : IDoctorAvailabilityService
     {
         private readonly IDoctorAvailabilityRepository _availabilityRepository;
+        private readonly IAppointmentRepository _appointmentRepository;
         private readonly IAdminRepository _doctorRepository;
         private readonly IMapper _mapper;
 
         public DoctorAvailabilityService(
             IDoctorAvailabilityRepository availabilityRepository,
+            IAppointmentRepository appointmentRepository,
             IAdminRepository doctorRepository,
             IMapper mapper)
         {
             _availabilityRepository = availabilityRepository;
             _doctorRepository = doctorRepository;
             _mapper = mapper;
+            _appointmentRepository = appointmentRepository;
         }
 
         public async Task<DoctorAvailabilityDto> GetAvailability(int doctorId)
@@ -32,8 +36,40 @@ namespace ClinicProject1.Services.Implementations
             if (availability == null)
                 return null;
 
-            return _mapper.Map<DoctorAvailabilityDto>(availability);
+            var dto = new DoctorAvailabilityDto
+            {
+                DoctorId = doctorId,
+                AvailableDays = new List<WorkDays> { availability.Day1, availability.Day2 },
+                WorkingHours = $"{availability.StartTime} - {availability.EndTime}",
+                IsAvailable = availability.IsAvailable,
+                AvailableTimeSlots = new Dictionary<string, List<string>>()
+            };
+
+            var appointments = await _appointmentRepository.GetAppointmentsByDoctorId(doctorId);
+
+            foreach (var day in dto.AvailableDays)
+            {
+                var dayAppointments = appointments
+                    .Where(a => a.AppointmentDay == day)
+                    .ToList();
+
+                var allTimeSlots = Enum.GetValues(typeof(AppointmentTimes))
+                    .Cast<AppointmentTimes>()
+                    .ToList();
+
+                var availableTimes = allTimeSlots
+                    .Where(time => !dayAppointments.Any(a =>
+                        a.Time == time &&
+                        (a.Status == AppointmentStatus.Pending || a.Status == AppointmentStatus.Approved)))
+                    .Select(time => FormatTime(time))
+                    .ToList();
+
+                dto.AvailableTimeSlots.Add(day.ToString(), availableTimes);
+            }
+
+            return dto;
         }
+
 
         public async Task<bool> AssignAvailability(int doctorId, AssignAvailabilityDto dto)
         {
@@ -62,6 +98,24 @@ namespace ClinicProject1.Services.Implementations
             };
 
             return await _availabilityRepository.CreateAvailability(newAvailability);
+        }
+
+        private string FormatTime(AppointmentTimes time)
+        {
+            return time switch
+            {
+                AppointmentTimes.Time_0500 => "05:00 PM",
+                AppointmentTimes.Time_0530 => "05:30 PM",
+                AppointmentTimes.Time_0600 => "06:00 PM",
+                AppointmentTimes.Time_0630 => "06:30 PM",
+                AppointmentTimes.Time_0700 => "07:00 PM",
+                AppointmentTimes.Time_0730 => "07:30 PM",
+                AppointmentTimes.Time_0800 => "08:00 PM",
+                AppointmentTimes.Time_0830 => "08:30 PM",
+                AppointmentTimes.Time_0900 => "09:00 PM",
+                AppointmentTimes.Time_0930 => "09:30 PM",
+                _ => time.ToString()
+            };
         }
     }
 }

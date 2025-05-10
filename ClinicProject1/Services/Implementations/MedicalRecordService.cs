@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ClinicProject1.DTOs.MedicalRecordDTOs;
+using ClinicProject1.Models.DTOs.MedicalRecordDTOs;
 using ClinicProject1.Repositories.Interfaces;
 using ClinicProject1.Services.Interfaces;
 
@@ -33,6 +33,8 @@ namespace ClinicProject1.Services.Implementations
             {
                 var recordDto = _mapper.Map<MedicalRecordDto>(record);
                 recordDto.DoctorName = $"{record.Doctor.User.FirstName} {record.Doctor.User.LastName}";
+                recordDto.Specialization = record.Doctor.Specialization.ToString();
+                recordDto.Photo = record.Doctor.User.Photo;
                 historyDto.MedicalRecords.Add(recordDto);
             }
 

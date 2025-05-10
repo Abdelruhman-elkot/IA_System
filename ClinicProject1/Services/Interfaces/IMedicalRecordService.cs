@@ -1,4 +1,4 @@
-﻿using ClinicProject1.DTOs.MedicalRecordDTOs;
+﻿using ClinicProject1.Models.DTOs.MedicalRecordDTOs;
 
 namespace ClinicProject1.Services.Interfaces
 {

@@ -1,12 +1,11 @@
-﻿using ClinicProject1.DTOs.Doctor_DTOs;
-using ClinicProject1.Models.Entities;
+﻿using ClinicProject1.Models.Entities;
 using ClinicProject1.Services.Interfaces;
 using AutoMapper;
 using ClinicProject1.Repositories.Interfaces;
-using ClinicProject1.DTOs.DoctorDTOs;
-using ClinicProject1.DTOs.ReportsDTOs;
 using System.Text;
 using ClinicProject1.Models.Enums;
+using ClinicProject1.Models.DTOs.DoctorDTOs;
+using ClinicProject1.Models.DTOs.ReportsDTOs;
 
 namespace ClinicProject1.Services.Implementations
 {

@@ -1,4 +1,4 @@
-﻿using ClinicProject1.DTOs.AvailabilityDTOs;
+﻿using ClinicProject1.Models.DTOs.AvailabilityDTOs;
 
 namespace ClinicProject1.Services.Interfaces
 {

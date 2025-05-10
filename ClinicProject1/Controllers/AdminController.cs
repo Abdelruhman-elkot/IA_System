@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ClinicProject1.DTOs.Doctor_DTOs;
 using ClinicProject1.Services.Interfaces;
-using ClinicProject1.DTOs.DoctorDTOs;
-using ClinicProject1.DTOs.ReportsDTOs;
+using ClinicProject1.Models.DTOs.DoctorDTOs;
+using ClinicProject1.Models.DTOs.ReportsDTOs;
 
 namespace ClinicProject1.Controllers
 {

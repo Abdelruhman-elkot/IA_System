@@ -2,7 +2,7 @@
 using ClinicProject1.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace ClinicProject1.DTOs.Doctor_DTOs
+namespace ClinicProject1.Models.DTOs.DoctorDTOs
 {
     public class CreateDoctorDto
     {

@@ -1,4 +1,5 @@
-﻿using ClinicProject1.DTOs.AppointmentDtos;
+﻿using ClinicProject1.Models.DTOs.AppointmentDtos;
+using ClinicProject1.Models.Enums;
 using ClinicProject1.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -121,5 +122,19 @@ namespace ClinicProject1.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        //[HttpGet("available-slots/{doctorId}/{day}")]
+        //public async Task<ActionResult<List<string>>> GetAvailableTimeSlots(int doctorId, WorkDays day)
+        //{
+        //    try
+        //    {
+        //        var timeSlots = await _appointmentService.GetAvailableTimeSlots(doctorId, day);
+        //        return Ok(timeSlots.Select(t => t.ToString()).ToList());
+        //    }
+        //    catch (KeyNotFoundException ex)
+        //    {
+        //        return NotFound(ex.Message);
+        //    }
+        //}
     }
 }

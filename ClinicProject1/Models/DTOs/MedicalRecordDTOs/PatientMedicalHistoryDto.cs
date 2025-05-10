@@ -1,4 +1,4 @@
-﻿namespace ClinicProject1.DTOs.MedicalRecordDTOs
+﻿namespace ClinicProject1.Models.DTOs.MedicalRecordDTOs
 {
     public class PatientMedicalHistoryDto
     {

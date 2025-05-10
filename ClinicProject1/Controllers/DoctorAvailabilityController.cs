@@ -1,4 +1,5 @@
-﻿using ClinicProject1.DTOs.AvailabilityDTOs;
+﻿using ClinicProject1.Models.DTOs.AvailabilityDTOs;
+using ClinicProject1.Models.Enums;
 using ClinicProject1.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,26 @@ namespace ClinicProject1.Controllers
             {
                 var availability = await _availabilityService.GetAvailability(doctorId);
                 return availability == null ? NotFound() : Ok(availability);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [HttpGet("timeslots/{day}")]
+        public async Task<ActionResult<List<string>>> GetAvailableTimeSlots(int doctorId, WorkDays day)
+        {
+            try
+            {
+                var availability = await _availabilityService.GetAvailability(doctorId);
+                if (availability == null)
+                    return NotFound("Doctor availability not found");
+
+                if (!availability.AvailableDays.Contains(day))
+                    return BadRequest("The selected day is not available for this doctor");
+
+                return Ok(availability.AvailableTimeSlots[day.ToString()]);
             }
             catch (KeyNotFoundException ex)
             {

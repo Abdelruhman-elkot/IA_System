@@ -1,4 +1,5 @@
-﻿using ClinicProject1.DTOs.AppointmentDtos;
+﻿using ClinicProject1.Models.DTOs.AppointmentDtos;
+using ClinicProject1.Models.Enums;
 
 namespace ClinicProject1.Services.Interfaces
 {
@@ -14,5 +15,7 @@ namespace ClinicProject1.Services.Interfaces
         Task<AppointmentDashboardDto> RescheduleAppointment(int appointmentId, RescheduleAppointmentDto rescheduleDto);
 
         Task<AppointmentDashboardDto> ApproveAppointment(int appointmentId);
+
+        Task<List<AppointmentTimes>> GetAvailableTimeSlots(int doctorId, WorkDays day);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using ClinicProject1.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace ClinicProject1.DTOs.AvailabilityDTOs
+namespace ClinicProject1.Models.DTOs.AvailabilityDTOs
 {
     public class AssignAvailabilityDto
     {

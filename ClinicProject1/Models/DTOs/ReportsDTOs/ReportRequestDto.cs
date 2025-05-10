@@ -1,6 +1,6 @@
 ﻿using ClinicProject1.Models.Enums;
 
-namespace ClinicProject1.DTOs.ReportsDTOs
+namespace ClinicProject1.Models.DTOs.ReportsDTOs
 {
     public class ReportRequestDto
     {

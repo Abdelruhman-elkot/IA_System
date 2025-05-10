@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
-using ClinicProject1.DTOs.AppointmentDtos;
+using ClinicProject1.Models.DTOs.AppointmentDtos;
 using ClinicProject1.Models.Entities;
 using ClinicProject1.Models.Enums;
 using ClinicProject1.Repositories.Interfaces;
 using ClinicProject1.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicProject1.Services.Implementations
 {
@@ -94,14 +95,18 @@ namespace ClinicProject1.Services.Implementations
             return _mapper.Map<AppointmentDashboardDto>(appointment);
         }
 
-        public async Task<AppointmentDashboardDto> RescheduleAppointment(int appointmentId, RescheduleAppointmentDto rescheduleDto)
+
+        public async Task<AppointmentDashboardDto> RescheduleAppointment(
+            int appointmentId, [FromBody] RescheduleAppointmentDto rescheduleDto)
         {
             var existingAppointment = await _appointmentRepository.GetAppointmentById(appointmentId);
             if (existingAppointment == null)
                 throw new KeyNotFoundException("Appointment not found");
 
-            var isAvailable = await IsTimeSlotAvailable(existingAppointment.DoctorId,
-                rescheduleDto.NewAppointmentDay, rescheduleDto.NewTime);
+            var isAvailable = await IsTimeSlotAvailable(
+                existingAppointment.DoctorId,
+                rescheduleDto.NewAppointmentDay,
+                rescheduleDto.NewTime);
 
             if (!isAvailable)
             {
@@ -114,6 +119,28 @@ namespace ClinicProject1.Services.Implementations
 
             await _appointmentRepository.UpdateAppointment(existingAppointment);
             return _mapper.Map<AppointmentDashboardDto>(existingAppointment);
+        }
+
+
+        public async Task<List<AppointmentTimes>> GetAvailableTimeSlots(int doctorId, WorkDays day)
+        {
+            var availability = await _availabilityRepository.GetAvailabilityByDoctorId(doctorId);
+            if (availability == null || !availability.IsAvailable)
+                return new List<AppointmentTimes>();
+
+            if (day != availability.Day1 && day != availability.Day2)
+                return new List<AppointmentTimes>();
+
+            var existingAppointments = await _appointmentRepository.GetAppointmentsByDoctorId(doctorId);
+            var allTimeSlots = Enum.GetValues(typeof(AppointmentTimes)).Cast<AppointmentTimes>().ToList();
+
+            return allTimeSlots.Where(time =>
+                !existingAppointments.Any(a =>
+                    a.AppointmentDay == day &&
+                    a.Time == time &&
+                    (a.Status == AppointmentStatus.Pending || a.Status == AppointmentStatus.Approved)
+                )
+            ).ToList();
         }
 
 
@@ -131,7 +158,7 @@ namespace ClinicProject1.Services.Implementations
             var hasConflict = existingAppointments.Any(a =>
                 a.AppointmentDay == day &&
                 a.Time == time &&
-                a.Status != AppointmentStatus.Canceled);
+                (a.Status == AppointmentStatus.Pending || a.Status == AppointmentStatus.Approved));
 
             return !hasConflict;
         }
