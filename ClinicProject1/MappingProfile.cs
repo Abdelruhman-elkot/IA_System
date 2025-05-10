@@ -40,7 +40,7 @@ namespace ClinicProject1
                 .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.User.PhoneNumber))
                 .ForMember(dest => dest.Specialization, opt => opt.MapFrom(src => src.Specialization.ToString()))
                 .ForMember(dest => dest.AvailableDays, opt => opt.MapFrom(src => src.Availabilities.Any()? 
-                    new List<string> { src.Availabilities.First().Day1.ToString(), src.Availabilities.First().Day2.ToString() }: new List<string>()))
+                    new List<string> { $"{src.Availabilities.First().Day1.ToString()} - {src.Availabilities.First().Day2.ToString()}" }: new List<string>()))
                 .ForMember(dest => dest.Availability, opt => opt.MapFrom(src => src.Availabilities.Any()? 
                     $"{src.Availabilities.First().StartTime} - {src.Availabilities.First().EndTime}" : null));
 
