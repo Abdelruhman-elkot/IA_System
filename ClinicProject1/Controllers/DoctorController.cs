@@ -37,14 +37,14 @@ namespace ClinicProject1.Controllers
             return Ok(patients);
         }
 
-        [HttpPatch("updatePrescription/{patientId}")]
+        [HttpPatch("updatePrescription/{doctorId}/{patientId}")]
         //[Authorize(Roles = "Doctor")]
-        public async Task<ActionResult> updatePrescription(int patientId, [FromBody] string prescriptionData)
+        public async Task<ActionResult> updatePrescription(int patientId, int doctorId, [FromBody] string prescriptionData)
         {
             var doctorUsername = User.FindFirst(ClaimTypes.Name)?.Value;
             var doctor = await _context.Doctors
                 .Include(d => d.User)
-                .FirstOrDefaultAsync(d => d.User.Username == doctorUsername);
+                .FirstOrDefaultAsync(d => d.DoctorId == doctorId);
 
             if (doctor == null)
             {

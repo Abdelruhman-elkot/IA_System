@@ -132,7 +132,7 @@ namespace ClinicProject1.Extensions
             }
 
             await context.SaveChangesAsync();
-            }
+        }
 
         private static async Task SeedPatients(ClinicDbContext context)
         {
@@ -141,19 +141,19 @@ namespace ClinicProject1.Extensions
                 new(
                     new User
                     {
-                        Username = "ganna wessam",
+                        Username = "Patient1",
                         Photo = "patient1.jpg",
-                        Password = "ganna@123",
+                        Password = "Patient@123",
                         Role = Role.Patient,
-                        FirstName = "ganna",
-                        LastName = "wessam",
-                        Email = "ganna@clinic.com",
-                        PhoneNumber = "01207048248"
+                        FirstName = "Patient",
+                        LastName = "1",
+                        Email = "Patient1@clinic.com",
+                        PhoneNumber = "1987654321"
                     },
                     new Patient
                     {
-                        Age = 20,
-                        Gender = Gender.Female,
+                        Age = 35,
+                        Gender = Gender.Male,
                         ChronicDiseases = "Hypertension",
                         MedicalComplaint = "Routine checkup"
                     }
@@ -161,14 +161,14 @@ namespace ClinicProject1.Extensions
                 new(
                     new User
                     {
-                        Username = "farah hossam",
+                        Username = "Patient2",
                         Photo = "patient2.jpg",
-                        Password = "farah@123",
+                        Password = "Patient@123",
                         Role = Role.Patient,
-                        FirstName = "farah",
-                        LastName = "hossam",
-                        Email = "farah@clinic.com",
-                        PhoneNumber = "01014418986"
+                        FirstName = "Patient",
+                        LastName = "2",
+                        Email = "Patient2@clinic.com",
+                        PhoneNumber = "1987654322"
                     },
                     new Patient
                     {
@@ -241,7 +241,7 @@ namespace ClinicProject1.Extensions
                     DoctorId = doctors[1].DoctorId,
                     AppointmentDay = WorkDays.Monday,
                     Time = AppointmentTimes.Time_0830,
-                    Status = AppointmentStatus.Rescheduled
+                    Status = AppointmentStatus.Approved
                 },
                 new()
                 {
