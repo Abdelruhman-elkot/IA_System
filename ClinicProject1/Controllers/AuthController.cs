@@ -66,11 +66,14 @@ namespace ClinicProject1.Controllers
                 return BadRequest("User already exist");
             }
 
+            string userName = $"{dto.FirstName}{dto.LastName}";
+
             var user = new User
             {
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 Password = dto.Password,
+                Username = userName,
                 Email = dto.Email,
                 PhoneNumber = dto.PhoneNumber,
                 Role = Role.Patient
