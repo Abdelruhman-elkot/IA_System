@@ -5,6 +5,7 @@ using ClinicProject1.Repositories.Implementations;
 using ClinicProject1.Repositories.Interfaces;
 using ClinicProject1.Services.Implementations;
 using ClinicProject1.Services.Interfaces;
+using ClinicProject1.Services.MicroServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -56,6 +57,7 @@ builder.Services.AddScoped<IDoctorAvailabilityService, DoctorAvailabilityService
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
 
+builder.Services.AddScoped<WhatsAppService>();
 builder.Services.AddScoped<WebSocketService>();
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
