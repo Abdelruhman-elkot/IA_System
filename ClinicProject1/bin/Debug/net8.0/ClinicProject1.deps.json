@@ -19,7 +19,7 @@
           "Selenium.WebDriver": "4.31.0",
           "SendGrid": "9.29.3",
           "Swashbuckle.AspNetCore": "8.1.1",
-          "Twilio": "7.11.0",
+          "Twilio": "7.11.1",
           "WkHtmlToPdf": "1.0.2"
         },
         "runtime": {
@@ -1807,7 +1807,7 @@
           "System.Xml.ReaderWriter": "4.0.11"
         }
       },
-      "Twilio/7.11.0": {
+      "Twilio/7.11.1": {
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": "8.3.1",
           "Newtonsoft.Json": "13.0.1",
@@ -1816,8 +1816,8 @@
         },
         "runtime": {
           "lib/net6.0/Twilio.dll": {
-            "assemblyVersion": "7.11.0.0",
-            "fileVersion": "7.11.0.0"
+            "assemblyVersion": "7.11.1.0",
+            "fileVersion": "7.11.1.0"
           }
         }
       },
@@ -2887,12 +2887,12 @@
       "path": "system.xml.xdocument/4.0.11",
       "hashPath": "system.xml.xdocument.4.0.11.nupkg.sha512"
     },
-    "Twilio/7.11.0": {
+    "Twilio/7.11.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LUynW3j+prXiReXLCjeYmLwUVTjzX5dljy60yr/gaBQFAi8MC29NeWIhqZcjcm+crxMTFNWAMhjUy0tnCsZZDw==",
-      "path": "twilio/7.11.0",
-      "hashPath": "twilio.7.11.0.nupkg.sha512"
+      "sha512": "sha512-3ILtPGTGxOtZ/3AYLKpRzyyda4TA6hGEm9hbTQ/h3fj2k3mZjqgW6oE1U8usqRm4nGibFN3smDo2j49pvaUQCA==",
+      "path": "twilio/7.11.1",
+      "hashPath": "twilio.7.11.1.nupkg.sha512"
     },
     "WkHtmlToPdf/1.0.2": {
       "type": "package",

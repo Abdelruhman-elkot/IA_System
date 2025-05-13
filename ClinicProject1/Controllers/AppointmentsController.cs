@@ -1,8 +1,7 @@
 ﻿using ClinicProject1.Data;
-using ClinicProject1.MicroService;
-﻿using ClinicProject1.Models.DTOs.AppointmentDtos;
-using ClinicProject1.Models.Enums;
+using ClinicProject1.Models.DTOs.AppointmentDtos;
 using ClinicProject1.Services.Interfaces;
+using ClinicProject1.Services.MicroServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,24 +22,6 @@ namespace ClinicProject1.Controllers
             _context = context;
         }
 
-        [HttpGet("phoneNumberByAppointmentId")]
-        public async Task<string> phoneNumberByAppointmentId(int appointmentId)
-        {
-            var appointment = await _context.Appointments.FindAsync(appointmentId);
-            if (appointment != null)
-            {
-                var patient = await _context.Patients
-                    .Include(d => d.User)
-                    //Generates a JOIN in SQL to pull related data in one go — avoiding extra queries or lazy loading.
-                    .FirstOrDefaultAsync(p => p.PatientId == appointment.PatientId);
-                if (patient != null)
-                {
-                    return patient.User.PhoneNumber;
-                }
-            }
-
-            return "no patient assigned to this appointment";
-        }
         [HttpGet]
         public async Task<ActionResult<AppointmentDashboardDto>> GetAllAppointments()
         {
@@ -75,16 +56,15 @@ namespace ClinicProject1.Controllers
                     var result = _whatsAppService.SendMessage(phoneNumber);
                     var appointment = await _appointmentService.GetAppointmentById(appointmentId);
                     return Ok(appointment);
-                    // return Ok(result);
                 }
                 catch (Exception ex)
                 {
                     return BadRequest(ex.Message);
                 }
             }
-            catch (KeyNotFoundException ex)
+            catch (Exception ex)
             {
-                return NotFound(ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -140,10 +120,9 @@ namespace ClinicProject1.Controllers
         }
 
         [HttpPut("{appointmentId}/reschedule")]
-        public async Task<ActionResult<AppointmentDashboardDto>> RescheduleAppointment(
-            int appointmentId, [FromBody] RescheduleAppointmentDto rescheduleDto)
+        public async Task<ActionResult<AppointmentDashboardDto>> RescheduleAppointment(int appointmentId, [FromBody] RescheduleAppointmentDto rescheduleDto)
         {
-            try
+            try 
             {
                 var appointment = await _appointmentService.RescheduleAppointment(appointmentId, rescheduleDto);
                 return Ok(appointment);
@@ -158,18 +137,22 @@ namespace ClinicProject1.Controllers
             }
         }
 
-        //[HttpGet("available-slots/{doctorId}/{day}")]
-        //public async Task<ActionResult<List<string>>> GetAvailableTimeSlots(int doctorId, WorkDays day)
-        //{
-        //    try
-        //    {
-        //        var timeSlots = await _appointmentService.GetAvailableTimeSlots(doctorId, day);
-        //        return Ok(timeSlots.Select(t => t.ToString()).ToList());
-        //    }
-        //    catch (KeyNotFoundException ex)
-        //    {
-        //        return NotFound(ex.Message);
-        //    }
-        //}
+        [HttpGet("phoneNumberByAppointmentId")]
+        public async Task<string> phoneNumberByAppointmentId(int appointmentId)
+        {
+            var appointment = await _context.Appointments.FindAsync(appointmentId);
+            if (appointment != null)
+            {
+                var patient = await _context.Patients
+                    .Include(d => d.User)
+                    .FirstOrDefaultAsync(p => p.PatientId == appointment.PatientId);
+                if (patient != null)
+                {
+                    return patient.User.PhoneNumber;
+                }
+            }
+
+            return "no patient assigned to this appointment";
+        }
     }
 }

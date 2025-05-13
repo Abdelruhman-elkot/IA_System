@@ -14,7 +14,5 @@ namespace ClinicProject1.Services.Interfaces
 
         Task<IEnumerable<DoctorScheduleReportDto>> GenerateDoctorSchedulesReport();
         Task<IEnumerable<PatientVisitReportDto>> GeneratePatientVisitsReport();
-        Task<byte[]> GenerateDoctorSchedulesPdfReport();
-        Task<byte[]> GeneratePatientVisitsPdfReport();
     }
 }

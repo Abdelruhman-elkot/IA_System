@@ -13,13 +13,11 @@ namespace ClinicProject1.Services.Implementations
     {
         private readonly IAdminRepository _adminRepository;
         private readonly IMapper _mapper;
-        private readonly IPdfService _pdfService;
 
-        public AdminService(IAdminRepository adminRepository, IMapper mapper, IPdfService pdfService)
+        public AdminService(IAdminRepository adminRepository, IMapper mapper)
         {
             _adminRepository = adminRepository;
             _mapper = mapper;
-            _pdfService = pdfService;
         }
 
         #region Doctor Management
@@ -91,6 +89,7 @@ namespace ClinicProject1.Services.Implementations
         }
         #endregion
 
+        #region Reports
         public async Task<IEnumerable<DoctorScheduleReportDto>> GenerateDoctorSchedulesReport()
         {
             var Reports = await _adminRepository.GetDoctorSchedulesReport();
@@ -102,58 +101,6 @@ namespace ClinicProject1.Services.Implementations
             var Reports = await _adminRepository.GetPatientVisitsReport();
             return _mapper.Map<IEnumerable<PatientVisitReportDto>>(Reports);
         }
-
-        public async Task<byte[]> GenerateDoctorSchedulesPdfReport()
-        {
-            var data = await GenerateDoctorSchedulesReport();
-            //var dataList = data.ToList();
-            var html = GenerateDoctorSchedulesHtml(data);
-            return _pdfService.GeneratePdf(html);
-        }
-
-        public async Task<byte[]> GeneratePatientVisitsPdfReport()
-        {
-            var data =await GeneratePatientVisitsReport();
-            var html = GeneratePatientVisitsHtml(data);
-            return _pdfService.GeneratePdf(html);
-        }
-
-        private string GenerateDoctorSchedulesHtml(IEnumerable<DoctorScheduleReportDto> data)
-        {
-            var sb = new StringBuilder();
-            sb.Append("<h1>Doctor Schedules Report</h1>");
-            sb.Append("<table border='1' cellpadding='5' cellspacing='0' width='100%'>");
-            sb.Append("<tr><th>Doctor Name</th><th>Specialization</th><th>Available Days</th><th>Working Hours</th><th>Total Appointments</th></tr>");
-
-            foreach (var doctor in data ?? Enumerable.Empty<DoctorScheduleReportDto>())
-            {
-                sb.Append($"<tr><td>{doctor.DoctorName ?? "N/A"}</td>" +
-                         $"<td>{doctor.Specialization ?? "N/A"}</td>" +
-                         $"<td>{(doctor.AvailableDays != null ? string.Join(", ", doctor.AvailableDays) : "N/A")}</td>" +
-                         $"<td>{doctor.WorkingHours ?? "N/A"}</td>" +
-                         $"<td>{doctor.TotalAppointments}</td></tr>");
-            }
-
-            sb.Append("</table>");
-            return sb.ToString();
-        }
-
-        private string GeneratePatientVisitsHtml(IEnumerable<PatientVisitReportDto> data)
-        {
-            var sb = new StringBuilder();
-            sb.Append("<h1>Patient Visits Report</h1>");
-            sb.Append("<table border='1' cellpadding='5' cellspacing='0' width='100%'>");
-            sb.Append("<tr><th>Patient Name</th><th>Age</th><th>Gender</th><th>Total Visits</th><th>Last Visit</th><th>Complaint</th></tr>");
-
-            foreach (var patient in data)
-            {
-                sb.Append($"<tr><td>{patient.PatientName}</td><td>{patient.Age}</td>" +
-                          $"<td>{patient.Gender}</td><td>{patient.TotalVisits}</td>" +
-                          $"<td>{patient.LastVisitDate}</td><td>{patient.MostCommonComplaint}</td></tr>");
-            }
-
-            sb.Append("</table>");
-            return sb.ToString();
-        }
+        #endregion Reports
     }
 }

@@ -5,7 +5,7 @@ namespace ClinicProject1.Models.DTOs.AuthDTOs
 {
     public class RegisterPatientDto
     {
-        public string Username { get; set; }
+        //public string Username { get; set; } = FirstName 
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

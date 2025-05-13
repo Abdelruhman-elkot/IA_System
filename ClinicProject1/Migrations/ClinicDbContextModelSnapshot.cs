@@ -217,11 +217,11 @@ namespace ClinicProject1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("senderUsername")
+                    b.Property<string>("senderUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("targetUser")
+                    b.Property<string>("targetUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

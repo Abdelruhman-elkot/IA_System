@@ -24,7 +24,7 @@ namespace ClinicProject1.Controllers
 
             if (validUser != null)
             {
-                var token = generateToken(validUser.Username, validUser.Role, validUser.UserId);
+                var token = generateToken(validUser.Username, validUser.Role, validUser.UserId); 
                 return Ok(token);
             }
             return Unauthorized("wrong password or username");
@@ -43,7 +43,7 @@ namespace ClinicProject1.Controllers
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256
                  ),
-
+                
                 Subject = new ClaimsIdentity(new Claim[]
                     {
                         new(ClaimTypes.Name, username),
@@ -68,12 +68,11 @@ namespace ClinicProject1.Controllers
 
             var user = new User
             {
-                Username = dto.Username,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
                 Password = dto.Password,
                 Email = dto.Email,
                 PhoneNumber = dto.PhoneNumber,
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
                 Role = Role.Patient
             };
 
@@ -97,6 +96,7 @@ namespace ClinicProject1.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
 
         [HttpGet]
         [Route("logOut")]

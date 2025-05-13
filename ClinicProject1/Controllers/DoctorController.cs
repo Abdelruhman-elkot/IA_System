@@ -1,7 +1,6 @@
 ﻿using ClinicProject1.Data;
 using ClinicProject1.Models.Entities;
 using ClinicProject1.Models.Enums;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -29,17 +28,18 @@ namespace ClinicProject1.Controllers
                 return NotFound("Doctor not found");
             }
 
-            var patients = await _context.MedicalRecords
-                .Where(p => p.DoctorId == doctorId) 
+            var patients = await _context.Appointments
+                .Where(p => p.DoctorId == doctorId && p.Status == Models.Enums.AppointmentStatus.Approved) 
                 .Select(p => new { p.PatientId, p.Patient.User.Username, p.Patient.MedicalComplaint })
                 .ToListAsync();
 
             return Ok(patients);
         }
 
+
         [HttpPatch("updatePrescription/{doctorId}/{patientId}")]
         //[Authorize(Roles = "Doctor")]
-        public async Task<ActionResult> updatePrescription(int patientId, int doctorId, [FromBody] string prescriptionData)
+        public async Task<ActionResult> updatePrescription(int patientId, int doctorId ,[FromBody] string prescriptionData)
         {
             var doctorUsername = User.FindFirst(ClaimTypes.Name)?.Value;
             var doctor = await _context.Doctors
@@ -84,6 +84,7 @@ namespace ClinicProject1.Controllers
             return Ok(medicalRecord.Prescription);
         }
 
+
         [HttpGet("getDoctorsBySpeciality/{speciality}")]
         //[Authorize(Roles = "Doctor")]
         public async Task<ActionResult> getDoctorsBySpeciality(Specialization speciality)
@@ -91,8 +92,7 @@ namespace ClinicProject1.Controllers
             var doctors = await _context.Doctors
                 .Where(d => d.Specialization == speciality)
                 .Include(d => d.Availabilities)
-                // patient.User is null unless lazy loading is enabled or explicitly " included "
-                .Select(d => new { d.User.Username, d.DoctorId , d.Availabilities})
+                .Select(d => new { d.User.Username, d.DoctorId, d.Availabilities })
                 .ToListAsync();
             if (doctors.Count == 0)
             {

@@ -208,16 +208,6 @@
   },
   {
     "ContainingType": "ClinicProject1.Controllers.AdminController",
-    "Method": "DownloadDoctorSchedulesPdf",
-    "RelativePath": "api/Admin/reports/doctor-schedules/pdf",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ClinicProject1.Controllers.AdminController",
     "Method": "GetPatientVisitsReport",
     "RelativePath": "api/Admin/reports/patient-visits",
     "HttpMethod": "GET",
@@ -235,16 +225,6 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "ClinicProject1.Controllers.AdminController",
-    "Method": "DownloadPatientVisitsPdf",
-    "RelativePath": "api/Admin/reports/patient-visits/pdf",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
   },
   {
     "ContainingType": "ClinicProject1.Controllers.AppointmentsController",
@@ -555,13 +535,18 @@
   {
     "ContainingType": "ClinicProject1.Controllers.DoctorController",
     "Method": "updatePrescription",
-    "RelativePath": "api/Doctor/updatePrescription/{patientId}",
+    "RelativePath": "api/Doctor/updatePrescription/{doctorId}/{patientId}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "doctorId",
         "Type": "System.Int32",
         "IsRequired": true
       },

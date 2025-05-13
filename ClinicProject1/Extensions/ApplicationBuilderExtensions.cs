@@ -132,7 +132,7 @@ namespace ClinicProject1.Extensions
             }
 
             await context.SaveChangesAsync();
-        }
+            }
 
         private static async Task SeedPatients(ClinicDbContext context)
         {

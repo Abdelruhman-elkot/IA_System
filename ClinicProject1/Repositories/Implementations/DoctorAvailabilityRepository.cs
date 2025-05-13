@@ -1,6 +1,5 @@
 ﻿using ClinicProject1.Data;
 using ClinicProject1.Models.Entities;
-using ClinicProject1.Repositories.Interfaces;
 using ClinicProject1.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

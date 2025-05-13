@@ -7,11 +7,12 @@ namespace ClinicProject1.Models.Entities
         [Key]
         public int id { get; set; }
 
-        public string targetUser { get; set; }
-
-        public string chatMessage { get; set; }
+        [Required]
+        public string senderUserId { get; set; }
 
         [Required]
-        public string senderUsername { get; set; }
+        public string targetUserId { get; set; }
+
+        public string chatMessage { get; set; }
     }
 }

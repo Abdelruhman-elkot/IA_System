@@ -12,11 +12,11 @@ namespace ClinicProject1.Controllers
     {
         private readonly IAdminService _adminService;
 
-
-        public AdminController(IAdminService adminService )
+        public AdminController(IAdminService adminService)
         {
             _adminService = adminService;
         }
+
 
         #region Doctor Management
         [HttpGet("doctors")]
@@ -76,19 +76,5 @@ namespace ClinicProject1.Controllers
             return Ok(report);
         }
         #endregion
-
-        [HttpGet("reports/doctor-schedules/pdf")]
-        public async Task<IActionResult> DownloadDoctorSchedulesPdf()
-        {
-            var pdfBytes = await _adminService.GenerateDoctorSchedulesPdfReport();
-            return File(pdfBytes, "application/pdf", "DoctorSchedulesReport.pdf");
-        }
-
-        [HttpGet("reports/patient-visits/pdf")]
-        public async Task<IActionResult> DownloadPatientVisitsPdf()
-        {
-            var pdfBytes = await _adminService.GeneratePatientVisitsPdfReport();
-            return File(pdfBytes, "application/pdf", "PatientVisitsReport.pdf");
-        }
     }
 }

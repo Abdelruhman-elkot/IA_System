@@ -31,7 +31,6 @@
         Pending,
         Approved,
         Completed,
-        Rescheduled,
         Canceled
     }
 

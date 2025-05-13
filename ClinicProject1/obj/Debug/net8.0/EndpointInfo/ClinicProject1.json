@@ -266,69 +266,6 @@
         }
       }
     },
-    "/api/Admin/reports/doctor-schedules/pdf": {
-      "get": {
-        "tags": [
-          "Admin"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Admin/reports/patient-visits/pdf": {
-      "get": {
-        "tags": [
-          "Admin"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Appointments/phoneNumberByAppointmentId": {
-      "get": {
-        "tags": [
-          "Appointments"
-        ],
-        "parameters": [
-          {
-            "name": "appointmentId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/Appointments": {
       "get": {
         "tags": [
@@ -649,6 +586,45 @@
         }
       }
     },
+    "/api/Appointments/phoneNumberByAppointmentId": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "parameters": [
+          {
+            "name": "appointmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Auth/login": {
       "post": {
         "tags": [
@@ -794,7 +770,7 @@
         }
       }
     },
-    "/api/Doctor/updatePrescription/{patientId}": {
+    "/api/Doctor/updatePrescription/{doctorId}/{patientId}": {
       "patch": {
         "tags": [
           "Doctor"
@@ -802,6 +778,15 @@
         "parameters": [
           {
             "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "doctorId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1370,10 +1355,6 @@
       "RegisterPatientDto": {
         "type": "object",
         "properties": {
-          "username": {
-            "type": "string",
-            "nullable": true
-          },
           "password": {
             "type": "string",
             "nullable": true

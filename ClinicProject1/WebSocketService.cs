@@ -2,7 +2,6 @@
 using ClinicProject1.Models.Entities;
 using Fleck;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Concurrent;
 
 namespace ClinicProject1
@@ -11,6 +10,7 @@ namespace ClinicProject1
     {
         private readonly ConcurrentDictionary<string, IWebSocketConnection> allSockets = new();
         private readonly IServiceScopeFactory _scopeFactory;
+
         public WebSocketService(IServiceScopeFactory scopeFactory)
         {
             _scopeFactory = scopeFactory;
@@ -22,71 +22,112 @@ namespace ClinicProject1
 
             server.Start(WSconnection =>
             {
-                string senderUsername = null;
-                string targetUser = null;
+                string senderId = null;
+                string targetId = null;
                 string chatMessage = null;
                 string messType = null;
-
-
-
 
                 WSconnection.OnOpen = () =>
                 {
                     Console.WriteLine("New connection!");
                 };
 
-                WSconnection.OnClose = () =>
+                WSconnection.OnClose = async () =>
                 {
                     Console.WriteLine("Connection closed.");
-                    if (senderUsername != null)
-                        allSockets.TryRemove(senderUsername, out _);
+                    if (senderId != null && allSockets.TryRemove(senderId, out _))
+                    {
+                        // Broadcast offline status
+                        foreach (var socket in allSockets.Values)
+                        {
+                            await socket.Send($"[System] offline:{senderId}");
+                        }
+                    }
                 };
 
                 WSconnection.OnMessage = async (message) =>
                 {
                     using var scope = _scopeFactory.CreateScope();
-                    var _context = scope.ServiceProvider.GetRequiredService<ClinicDbContext>(); 
+                    var _context = scope.ServiceProvider.GetRequiredService<ClinicDbContext>();
+
                     Console.WriteLine("Received: " + message);
                     var parts = message.Split(":", 4);
                     if (parts.Length < 4)
                     {
-                        await WSconnection.Send("Invalid message format. Expected format: messType:senderUsername:targetUser:chatMessage");
+                        await WSconnection.Send("Invalid format. Expected: messType:senderId:targetId:message");
                         return;
                     }
+
                     messType = parts[0];
-                    senderUsername = parts[1].ToLower();
-                    targetUser = parts[2].ToLower();
+                    senderId = parts[1].ToLower().Trim();
+                    targetId = parts[2].ToLower().Trim();
                     chatMessage = parts[3];
+
                     if (messType == "firstMess")
                     {
-                        allSockets[senderUsername] = WSconnection;
-                        await WSconnection.Send($"[System] You are connected as '{senderUsername}'");
+                        Console.WriteLine($"[WebSocketService] firstMess from: {senderId}, to: {targetId}");
+                        allSockets[senderId] = WSconnection;
+
+                        Console.WriteLine("[WebSocketService] Connected users:");
+                        foreach (var socket in allSockets)
+                        {
+                            Console.WriteLine($"User ID: {socket.Key}, Address: {socket.Value.ConnectionInfo.ClientIpAddress}:{socket.Value.ConnectionInfo.ClientPort}");
+                        }
+
+                        await WSconnection.Send($"[System] You are connected as '{senderId}'");
+
+                        // Broadcast to others that this user is now online
+                        foreach (var socket in allSockets)
+                        {
+                            if (socket.Key != senderId)
+                            {
+                                await socket.Value.Send($"[System] online:{senderId}");
+                            }
+                        }
+
+                        // Send chat history
                         var chatHistory = await _context.chatsHistories.Where(
-                            c => (c.targetUser == senderUsername && c.senderUsername == targetUser) ||
-                            (c.targetUser == targetUser && c.senderUsername == senderUsername)) 
+                            c => (c.targetUserId == senderId && c.senderUserId == targetId) ||
+                                 (c.targetUserId == targetId && c.senderUserId == senderId))
                             .OrderBy(c => c.id)
                             .ToListAsync();
+
                         foreach (var chat in chatHistory)
                         {
-                            await WSconnection.Send($"[{chat.senderUsername}] [{chat.targetUser}] {chat.chatMessage}");
+                            await WSconnection.Send($"[{chat.senderUserId}] to [{chat.targetUserId}]: {chat.chatMessage}");
                         }
                         return;
                     }
+
                     else if (messType == "sendMess")
                     {
+                        Console.WriteLine($"[WebSocketService] sendMess from: {senderId}, to: {targetId}, message: {chatMessage}");
+
                         var messToBeSaved = new chatHistory
                         {
-                            targetUser = targetUser,
-                            chatMessage = chatMessage,
-                            senderUsername = senderUsername
+                            targetUserId = targetId,
+                            senderUserId = senderId,
+                            chatMessage = chatMessage
                         };
                         _context.chatsHistories.Add(messToBeSaved);
                         await _context.SaveChangesAsync();
 
-                        if (allSockets.TryGetValue(targetUser, out var checkedTargetUser)) 
-                            await checkedTargetUser.Send($"[{senderUsername}] [{targetUser}] {chatMessage}"); 
+                        if (allSockets.TryGetValue(targetId, out var targetSocket))
+                        {
+                            await targetSocket.Send($"[{senderId}] to [{targetId}]: {chatMessage}");
+                        }
                         else
-                            await WSconnection.Send($" User '{targetUser}' is not online. he will recive the message as soon as he opens the chat");
+                        {
+                            await WSconnection.Send($"User '{targetId}' is not online. They will receive the message when they reconnect.");
+                        }
+                    }
+
+                    else if (messType == "checkOnline")
+                    {
+                        // Added feature: allow user to check if the other is online
+                        bool isOnline = allSockets.ContainsKey(targetId);
+                        await WSconnection.Send($"[System] status:{targetId}:{(isOnline ? "online" : "offline")}");
+                        return;
                     }
                 };
             });

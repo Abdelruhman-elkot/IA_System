@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FmCIsr1+xJU=",
+  "dgSpecHash": "hP5LYRcwZdk=",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\IA_System\\ClinicProject1\\ClinicProject1.csproj",
+  "projectFilePath": "D:\\Projects\\ClinicProject1\\ClinicProject1\\ClinicProject1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\3bdo3\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\3bdo3\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
@@ -154,7 +154,7 @@
     "C:\\Users\\3bdo3\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\3bdo3\\.nuget\\packages\\system.xml.readerwriter\\4.0.11\\system.xml.readerwriter.4.0.11.nupkg.sha512",
     "C:\\Users\\3bdo3\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
-    "C:\\Users\\3bdo3\\.nuget\\packages\\twilio\\7.11.0\\twilio.7.11.0.nupkg.sha512",
+    "C:\\Users\\3bdo3\\.nuget\\packages\\twilio\\7.11.1\\twilio.7.11.1.nupkg.sha512",
     "C:\\Users\\3bdo3\\.nuget\\packages\\wkhtmltopdf\\1.0.2\\wkhtmltopdf.1.0.2.nupkg.sha512"
   ],
   "logs": []
