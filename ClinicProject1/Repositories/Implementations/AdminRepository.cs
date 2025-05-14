@@ -79,6 +79,7 @@ namespace ClinicProject1.Repositories.Implementations
         }
         #endregion
 
+        #region Reports
         public async Task<IEnumerable<Doctor>> GetDoctorSchedulesReport()
         {
             return await _context.Doctors
@@ -92,9 +93,11 @@ namespace ClinicProject1.Repositories.Implementations
         {
             return await _context.Patients
                 .Include(p => p.User)
-                .Include(p => p.Appointments)
+                .Include(p => p.Appointments.Where(a => a.Status == Models.Enums.AppointmentStatus.Approved))
                 .Include(p => p.MedicalRecords)
+                .Where(p => p.Appointments.Any(a => a.Status == Models.Enums.AppointmentStatus.Approved))
                 .ToListAsync();
         }
+        #endregion
     }
 }
