@@ -2,6 +2,7 @@
 using ClinicProject1.Models.DTOs.AppointmentDtos;
 using ClinicProject1.Services.Interfaces;
 using ClinicProject1.Services.MicroServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

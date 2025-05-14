@@ -2,12 +2,12 @@
 using ClinicProject1.Services.Interfaces;
 using ClinicProject1.Models.DTOs.DoctorDTOs;
 using ClinicProject1.Models.DTOs.ReportsDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ClinicProject1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
     public class AdminController : ControllerBase
     {
         private readonly IAdminService _adminService;

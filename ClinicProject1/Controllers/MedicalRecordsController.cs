@@ -1,5 +1,6 @@
 ﻿using ClinicProject1.Models.DTOs.MedicalRecordDTOs;
 using ClinicProject1.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicProject1.Controllers

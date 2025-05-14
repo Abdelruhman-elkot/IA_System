@@ -1,6 +1,7 @@
 using ClinicProject1;
 using ClinicProject1.Data;
 using ClinicProject1.Extensions;
+using ClinicProject1.Models.Enums;
 using ClinicProject1.Repositories.Implementations;
 using ClinicProject1.Repositories.Interfaces;
 using ClinicProject1.Services.Implementations;
@@ -44,6 +45,20 @@ builder.Services.AddAuthentication().AddJwtBearer("Bearer", options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.SigningKey)),
     };
 });
+
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("AdminOnly", policy =>
+//        policy.RequireRole(nameof(Role.Admin)));
+//    options.AddPolicy("DoctorOnly", policy =>
+//        policy.RequireRole(nameof(Role.Doctor)));
+//    options.AddPolicy("PatientOnly", policy =>
+//        policy.RequireRole(nameof(Role.Patient)));
+//    options.AddPolicy("AdminOrPatient", policy =>
+//        policy.RequireAssertion(context =>
+//            context.User.IsInRole(nameof(Role.Admin)) ||
+//            context.User.IsInRole(nameof(Role.Patient))));
+//});
 
 // Register repositories
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();

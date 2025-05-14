@@ -113,8 +113,7 @@ namespace ClinicProject1.Services.Implementations
                 AppointmentTimes.Time_0800 => "08:00 PM",
                 AppointmentTimes.Time_0830 => "08:30 PM",
                 AppointmentTimes.Time_0900 => "09:00 PM",
-                AppointmentTimes.Time_0930 => "09:30 PM",
-                _ => time.ToString()
+                AppointmentTimes.Time_0930 => "09:30 PM"
             };
         }
     }

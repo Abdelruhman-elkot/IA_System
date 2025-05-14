@@ -15,10 +15,10 @@ namespace ClinicProject1.Extensions
             try
             {
                 var context = services.GetRequiredService<ClinicDbContext>();
-                await ClearDatabase(context);
+                //await ClearDatabase(context);
                 await context.Database.MigrateAsync();
 
-                if (!await context.Users.AnyAsync())
+                if (!await context.Users.AnyAsync(u => u.Username == "Admin1"))
                 {
                     await SeedAdmin(context);
                     await SeedDoctors(context);
@@ -279,16 +279,16 @@ namespace ClinicProject1.Extensions
             await context.SaveChangesAsync();
         }
 
-        private static async Task ClearDatabase(ClinicDbContext context)
-        {
-            context.MedicalRecords.RemoveRange(context.MedicalRecords);
-            context.Appointments.RemoveRange(context.Appointments);
-            context.DoctorAvailability.RemoveRange(context.DoctorAvailability);
-            context.Patients.RemoveRange(context.Patients);
-            context.Doctors.RemoveRange(context.Doctors);
-            context.Users.RemoveRange(context.Users);
+        //private static async Task ClearDatabase(ClinicDbContext context)
+        //{
+        //    context.MedicalRecords.RemoveRange(context.MedicalRecords);
+        //    context.Appointments.RemoveRange(context.Appointments);
+        //    context.DoctorAvailability.RemoveRange(context.DoctorAvailability);
+        //    context.Patients.RemoveRange(context.Patients);
+        //    context.Doctors.RemoveRange(context.Doctors);
+        //    context.Users.RemoveRange(context.Users);
 
-            await context.SaveChangesAsync();
-        }
+        //    await context.SaveChangesAsync();
+        //}
     }
 }

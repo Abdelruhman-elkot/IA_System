@@ -1,6 +1,7 @@
 ﻿using ClinicProject1.Data;
 using ClinicProject1.Models.Entities;
 using ClinicProject1.Models.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -18,7 +19,6 @@ namespace ClinicProject1.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Doctor")]
         [Route("viewPatientsData/{doctorId}")]
         public async Task<ActionResult> viewPatientsData(int doctorId)
         {
@@ -38,7 +38,6 @@ namespace ClinicProject1.Controllers
 
 
         [HttpPatch("updatePrescription/{doctorId}/{patientId}")]
-        //[Authorize(Roles = "Doctor")]
         public async Task<ActionResult> updatePrescription(int patientId, int doctorId ,[FromBody] string prescriptionData)
         {
             var doctorUsername = User.FindFirst(ClaimTypes.Name)?.Value;
